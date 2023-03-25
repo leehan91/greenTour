@@ -143,7 +143,7 @@ h1 {font-size:45px; color:rgb(112,173,71);}
         </div>
         
         <nav id="menu">
-            <a href="package_main"><span class="main_menu">패키지</span></a>
+            <a href="package_main?ccid=JPN"><span class="main_menu">패키지</span></a>
             <a href="mypackage_main"><span class="main_menu">나만의 패키지</span></a>
             <a href="pareview_list"><span class="main_menu">패키지 후기</span></a>
             <a href="#"><span class="main_menu">여행도시</span></a>

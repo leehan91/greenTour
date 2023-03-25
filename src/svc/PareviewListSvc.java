@@ -10,7 +10,7 @@ public class PareviewListSvc {
 	public int getPareviewListCount(String where) {
 		int rcnt = 0;
 		Connection conn = getConnection();
-		PareviewListDao pareviewListDao = PareviewListDao.getInstance();
+		PareviewDao pareviewListDao = PareviewDao.getInstance();
 		pareviewListDao.setConnection(conn);
 		
 		rcnt = pareviewListDao.getPareviewListCount(where);
@@ -18,13 +18,13 @@ public class PareviewListSvc {
 		
 		return rcnt;
 	}
-	public ArrayList<CsPareview> getPareviewList(String where, int cpage, int psize, String miid){
+	public ArrayList<CsPareview> getPareviewList(String where, int cpage, int psize){
 		ArrayList<CsPareview> csPareview = new ArrayList<CsPareview>(); 
 		Connection conn = getConnection();
-		PareviewListDao pareviewListDao = PareviewListDao.getInstance();
+		PareviewDao pareviewListDao = PareviewDao.getInstance();
 		pareviewListDao.setConnection(conn);
 		
-		csPareview = pareviewListDao.getCsPareviewList(where, cpage, psize, miid);
+		csPareview = pareviewListDao.getCsPareviewList(where, cpage, psize);
 		
 		close(conn);
 		

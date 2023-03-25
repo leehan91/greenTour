@@ -26,7 +26,7 @@ public class PareviewViewDao {
 			Statement stmt = null;
 			
 			try {
-				String sql = "update t_cs_Pareivew set cp_read = cp_read + 1 where cp_idx = " + cpidx;
+				String sql = "update t_cs_Pareview set cp_read = cp_read + 1 where cp_idx = " + cpidx;
 				stmt = conn.createStatement();
 				result = stmt.executeUpdate(sql);
 				
@@ -45,7 +45,8 @@ public class PareviewViewDao {
 			CsPareview cp = null;
 			
 			try {
-				String sql = "select * from t_cs_notice where cn_isdel = 'n' and cp_idx = " + cpidx;
+				String sql = "select * from t_cs_pareview where cp_isdel = 'n' and cp_idx = " + cpidx;
+				System.out.println(sql);
 				stmt = conn.createStatement();
 				rs = stmt.executeQuery(sql);
 				
@@ -53,25 +54,24 @@ public class PareviewViewDao {
 					cp = new CsPareview();
 					cp.setCp_idx(cpidx);
 					cp.setMi_id(rs.getString("mi_id"));
+					cp.setMi_name(rs.getString("mi_name"));
 					cp.setOp_code(rs.getString("op_code"));
 					cp.setCp_name(rs.getString("cp_name"));
 					cp.setCp_title(rs.getString("cp_title"));
 					cp.setCp_content(rs.getString("cp_content"));
 					cp.setCp_date(rs.getString("cp_date"));
 					cp.setCp_isdel(rs.getString("cp_isdel"));
-					cp.setCc_name(rs.getString("cc_name"));
-					cp.setOp_name(rs.getString("op_name"));
 					cp.setCp_read(rs.getInt("cp_read"));
 					cp.setCp_score(rs.getFloat("cp_score"));
 					
 				}
-				
 			} catch (Exception e) {
 				System.out.println("PareviewViewDao 클래스의 getPareviewView() 메소드 오류");
 			} finally {
 				close(rs);		close(stmt);
 			}
 			
+
 			return cp;
 		}
 }

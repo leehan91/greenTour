@@ -27,7 +27,7 @@ public class MyPackageMainCtrl extends HttpServlet {
 			response.setContentType("text/html; charset=utf-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('·Î±×ÀÎ ÈÄ »ç¿ëÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.');");
+			out.println("alert('ë¡œê·¸ì¸ í›„ ì´ìš©í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤..');");
 			out.println("location.replace('login_form.jsp?url=mypackage_main')");
 			out.println("</script>");
 			out.close();
@@ -36,12 +36,12 @@ public class MyPackageMainCtrl extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("front/mypackage/mypackage_main.jsp");
 		dispatcher.forward(request, response);
 		
-		// ÄíÅ°»èÁ¦ ³²°ÜµÒ 
+		// ï¿½ï¿½Å°ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Üµï¿½ 
 //		Cookie[] cookies = request.getCookies();
-//		if (cookies != null) { // ÄíÅ°°¡ ÇÑ°³¶óµµ ÀÖÀ¸¸é ½ÇÇà
+//		if (cookies != null) { // ï¿½ï¿½Å°ï¿½ï¿½ ï¿½Ñ°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 //	        for (int i = 0; i < cookies.length; i++) {
-//	            cookies[i].setMaxAge(0); // À¯È¿½Ã°£À» 0À¸·Î ¼³Á¤
-//	            response.addCookie(cookies[i]); // ÀÀ´ä¿¡ Ãß°¡ÇÏ¿© ¸¸·á½ÃÅ°±â.
+//	            cookies[i].setMaxAge(0); // ï¿½ï¿½È¿ï¿½Ã°ï¿½ï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+//	            response.addCookie(cookies[i]); // ï¿½ï¿½ï¿½ä¿¡ ï¿½ß°ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Å°ï¿½ï¿½.
 //	        }
 //	    }
 		

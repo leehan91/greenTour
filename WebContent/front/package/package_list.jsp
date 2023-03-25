@@ -16,7 +16,7 @@ String piCode = pdList.get(0).getPi_code();
 %>
 
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-<script>
+<%-- <script>
 var tmp = "<%=fiDeparture%>";
 <%if(fiDeparture != ""){%>
 $( document ).ready( function() {
@@ -107,297 +107,81 @@ function test(fiDeparture) {
 	});
 }
 </script>
-<style>
+ --%>
+ <style>
 span, object, h1, h2, h3, h4, h5, h6, p, pre, a, address, big, code, del, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
     margin: 0;
     padding: 0;
 }
-a {
-  text-decoration: none;
-}
-
-ul {
-	list-style: none;
-	padding: 0;
-}
-
+a {text-decoration: none;}
+ul {list-style: none; padding: 0;}
 img{width:100%}
+.content_section {margin: 0 auto; width: 1130px}
 
-.content_section {
-	margin: 0 auto;
-	width: 1130px	
-}
+.calendar {position: relative; table-layout: fixed; width: 738px; border-top: 1px solid #ccc;
+border-bottom: 1px solid #ccc; z-index: 1;}
 
-.calendar {
-	position: relative;
-	table-layout: fixed;
-	width: 738px;
-	border-top: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
-	z-index: 1;
-}
+.calendar th:first-child {color: #ed4949; border-left: 1px solid #ccc;}
+.calendar th.sat {color: #297fb8; border-right: 1px solid #ccc;}
+.calendar th {height: 44px; font-size: 14px;}
+.calendar tbody tr td:first-child {color: #ed4949;}
 
-.calendar th:first-child {
-	color: #ed4949;
-	border-left: 1px solid #ccc;
-}
+.calendar td {width: 101px; height: 70px; font-size: 13px; color: #aaa; font-weight: bold;
+border: 1px solid #ccc; background: #f5f5f5;vertical-align: top;}
+.calendar td a {position: relative; display: block; height: 47px; background: #fff;}
+.calendar td .price {padding: 20px 0 10px 10px;}
+.calendar td .day {display: block; padding: 6px 0 0 10px;}
+.calendar td a .day {color: #111;}
+.calendar td.sat a .day {color: #297fb8;}
+.calendar td.sun a .day {color: #ed4949;}
 
-.calendar th.sat {
-	color: #297fb8;
-	border-right: 1px solid #ccc;
-}
+table {border-collapse: collapse; border-spacing: 0;}
 
-.calendar th {
-	height: 44px;
-	font-size: 14px;
-}
+.tab-link.current{position: relative; z-index: 1; background: #3f4b5b; border-color: #3f4b5b;
+font-weight: bold;}
 
-.calendar tbody tr td:first-child {
-	color: #ed4949;
-}
+.tab-content{display: none;}
+.tab-content.current{display: block; border-bottom: 1px solid #e2e2e2;}
 
-.calendar td {
-	width: 101px;
-	height: 70px;
-	font-size: 13px;
-	color: #aaa;
-	font-weight: bold;
-	border: 1px solid #ccc;
-	background: #f5f5f5;
-	vertical-align: top;
-}
+.tabs_menu li {background: #f5f5f5;}
 
-.calendar td a {
-    position: relative;
-    display: block;
-    height: 47px;
-    background: #fff;
-}
-
-.calendar td .price {
-    padding: 20px 0 10px 10px;
-}
-
-.calendar td .day {
-	display: block;
-	padding: 6px 0 0 10px;
-}
-
-.calendar td a .day {
-	color: #111;
-}
-
-.calendar td.sat a .day {
-	color: #297fb8;
-}
-
-.calendar td.sun a .day {
-	color: #ed4949;
-}
-
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
-.tab-link.current{
-	position: relative;
-	z-index: 1;
-	background: #3f4b5b;
-	border-color: #3f4b5b;
-	font-weight: bold;
-}
-
-.tab-content{
-	display: none;
-}
-.tab-content.current{
-    display: block;
-    border-bottom: 1px solid #e2e2e2;
-}
-
-.tabs_menu li {
-	background: #f5f5f5;
-}
-
-.tabs_menu li a.current {
-    position: relative;
-    z-index: 1;
-    background: white;
-    border-color: #bbb;
-    color: black;
-    font-weight: bold;
-    border-bottom: none;
-    font-size: 18px;
-}
-
-.tabs_menu > li > a {
-    display: block;
-    margin-left: -1px;
-    padding: 12px 0;
-    box-sizing: border-box;
-    text-align: center;
-    font-size: 18px;
-    border: 1px solid #bbb;
-    color: #888;
-}
-
-.desc {
-	margin: 18px 0;
-}
-
-.day_select {
-	height: 586px;
-	margin-bottom: 30px;
-	overflow: hidden;
-}
-
-.product {
-	padding: 0 0 80px;
-}
-
-.title {
-	height: 29px;
-	padding: 33px 0 0;
-	margin: 0 0 23px;
-	font-size: 22px;
-	color: #111;
-	letter-spacing: -0.05em;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	overflow: hidden;
-}
-
-.day_select {
-	height: 587px;
-	margin-bottom: 30px;
-	overflow: hidden;
-}
-
-.desc p {
-	display: inline-block;
-	padding-left: 34px;
-}
-
-.desc p span{
-	padding-top: 4px;
-	padding-left: 73px;
-	font-size: 12px;
-	color: #555;
-	vertical-align: bottom;
-}
-
-.info_product {
-	float: left;
-	width: 331px;
-	height: 523px;
-	padding: 30px 29px 30px 30px;
-	border-top: 2px solid #111;
-	border-bottom: 1px solid #ccc;
-	border-left: 1px solid #ccc;
-}
-
-.data {
-	position: relative;
-	float: right;
-	height: 589px;
-	border-top: 2px solid #111;
-}
-
-.data_tab {
-	height: 55px;
-    margin: 0 0 10px;
-}
-
-.tabs_menu > li {
-float: left;
-width: 25%;
-}
-
-.table {
-	position: relative;
-	padding-top: 53px;
-	margin: 0 0 20px;
-	overflow: hidden;
-}
-
-.table_inner {
-	width: 100%;
-	height: 600px;
-	overflow: hidden;
-	overflow-y: scroll;
-}
-
-.goods {
-	table-layout: fixed;
-}
-
-.goods thead tr {
-	position: absolute;
-	top: 0;
-	right: 0;
-	left: 0;
-	z-index: 1;
-}
-
-.goods thead th {
-    height: 53px;
-    font-size: 14px;
-    background: #3f4b5b;
-    color: #fff;
-    border-right: 1px solid black;
-}
-.ico_align{
-	color: white;
-}
-
-.col1 {
-    width: 152px;
-}
-.col2 {
-    width: 125px;
-}
-.col3 {
-    width: 112px;
-}
-.col4 {
-    width: 496px;
-}
-.col5 {
-    width: 131px;
-}
-.col6 {
-    width: 115px;
-}
-
-.goods td {
-	position: relative;
-	padding: 10px 10px 12px 10px;
-	font-size: 13px;
-	border-left: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
-	word-wrap: break-word;
-	word-break: break-all;
-	letter-spacing: -0.04em;
-	text-align: center;
-}
-
-.goods tbody tr td:nth-child(1) {
-	width: 159px;
-	border-left: none;
-}
-.goods tbody tr td:nth-child(2) {
-	width: 111px;
-}
-.goods tbody tr td:nth-child(3) {
-	width: 110px;
-}
-.goods tbody tr td:nth-child(4) {
-	width: 581px;
-}
-.goods tbody tr td:nth-child(5) {
-	width: 134px;
-}
+.tabs_menu li a.current {position: relative; z-index: 1;background: white; border-color: #bbb;
+color: black; font-weight: bold; border-bottom: none; font-size: 18px;}
+.tabs_menu > li > a {display: block; margin-left: -1px; padding: 12px 0; box-sizing: border-box;
+text-align: center; font-size: 18px; border: 1px solid #bbb; color: #888;}
+.desc {margin: 18px 0;}
+.day_select {height: 586px; margin-bottom: 30px; overflow: hidden;}
+.product {padding: 0 0 80px;}
+.title {height: 29px; padding: 33px 0 0; margin: 0 0 23px; font-size: 22px; color: #111;
+letter-spacing: -0.05em; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;}
+.day_select {height: 587px; margin-bottom: 30px; overflow: hidden;}
+.desc p {display: inline-block; padding-left: 34px;}
+.desc p span{padding-top: 4px; padding-left: 73px; font-size: 12px; color: #555; vertical-align: bottom;}
+.info_product {float: left; width: 331px; height: 523px; padding: 30px 29px 30px 30px;
+border-top: 2px solid #111; border-bottom: 1px solid #ccc; border-left: 1px solid #ccc;}
+.data {position: relative; float: right; height: 589px; border-top: 2px solid #111;}
+.data_tab {height: 55px; margin: 0 0 10px;}
+.tabs_menu > li {float: left; width: 25%;}
+.table {position: relative;	padding-top: 53px; margin: 0 0 20px; overflow: hidden;}
+.table_inner {width: 100%; 	height: 600px; 	overflow: hidden; overflow-y: scroll;}
+.goods {table-layout: fixed;}
+.goods thead tr {position: absolute; top: 0; right: 0; left: 0; z-index: 1;}
+.goods thead th {height: 53px; font-size: 14px; background: #3f4b5b; color: #fff;
+border-right: 1px solid black;}
+.ico_align{color: white;}
+.col1 {width: 152px;}
+.col2 {width: 125px;}
+.col3 {width: 112px;}
+.col4 {width: 496px;}
+.col5 {width: 131px;}
+.col6 {width: 115px;}
+.goods td {position: relative; padding: 10px 10px 12px 10px; font-size: 13px; border-left: 1px solid #ccc;
+border-bottom: 1px solid #ccc; word-wrap: break-word; word-break: break-all; letter-spacing: -0.04em; text-align: center;}
+.goods tbody tr td:nth-child(1) { 	width: 159px;	border-left: none;}
+.goods tbody tr td:nth-child(2) {	width: 111px;}
+.goods tbody tr td:nth-child(3) {	width: 110px;}
+.goods tbody tr td:nth-child(4) {	width: 581px;}
+.goods tbody tr td:nth-child(5) {	width: 134px;}
 
 </style>
 <div class="product">
@@ -406,7 +190,7 @@ width: 25%;
 		<div class="day_select">
 			<div class="info_product">
 				<p>
-					<img src="/greenTourSite/front/img/<%=piImg%>">
+					<img src="/greenTour/front/img/<%=piImg%>">
 				</p>
 				<ul>
 					<li><span>MD Pick</span> <span><%=piName%></span></li>
@@ -878,6 +662,21 @@ width: 25%;
 						</tr>
 					</thead>
 					<tbody id="pkgTbody" style="display: none;">
+					<tr>
+						<td><span class='start'>fi_departure</span><br>fi_cityleave</td>
+						<td><span class='ico_air'>"+fr_name+"</span></td>
+						<td>pi_period</td>
+						<td class='name'>
+							<a href='package_detail?pi_code="+pi_code+"&fr_name="+fr_name+"&fi_departure="+fi_departure+"&fi_entry="+fi_entry+"'>pi_name</a>
+						</td>
+						<td>
+							<span class='state_start'>"+pi_price+"원</span>
+						</td>
+						<td>
+							<span class='state_start'>"+(pi_stock-pi_sale)+"/"+pi_stock+"</span>
+						</td>
+					</tr>
+					</tbody>
 				</table>
 			</div>
 		</div>

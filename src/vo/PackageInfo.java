@@ -4,8 +4,8 @@ import java.util.*;
 
 public class PackageInfo {
 	String pi_code, cc_id, hi_code, pi_name, pi_period, pi_keyword, pi_img1, pi_img2, pi_img3, pi_img4, pi_img5, pi_desc, pi_special;
-	String pi_tour, pi_food, pi_isview, pi_date, pi_last, pi_suggest, pi_country, fi_code, fi_departure;
-	int pn_idx, pi_dc, pi_stock, pi_sale, pi_read, pi_review, pi_price, pi_adult, pi_child;
+	String pi_tour, pi_food, pi_isview, pi_date, pi_last, pi_suggest, pi_country, fi_code, fi_departure, ai_id, pi_adult;
+	int pn_idx, pi_dc, pi_stock, pi_sale, pi_read, pi_review, pi_price, pi_child;
 	float pi_score;
 	String cc_name, pn_insur, pn_guide, pn_include, pn_declude, pn_warning, pn_safe, hi_name;
 	private ArrayList<PackageTour> tourList;
@@ -337,13 +337,13 @@ public class PackageInfo {
 
 
 
-	public int getPi_adult() {
+	public String getPi_adult() {
 		return pi_adult;
 	}
 
 
 
-	public void setPi_adult(int pi_adult) {
+	public void setPi_adult(String pi_adult) {
 		this.pi_adult = pi_adult;
 	}
 

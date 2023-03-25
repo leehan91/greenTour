@@ -25,7 +25,7 @@ public class AdminStatDateSvc {
 		AdminStatDao adminStatDao = AdminStatDao.getInstance();
 		adminStatDao.setConnection(conn);
 		
-		dateList = adminStatDao.getmpList(y, m);
+		// dateList = adminStatDao.getmpList(y, m);
 		close(conn);
 		
 		return dateList;

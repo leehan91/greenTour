@@ -29,14 +29,12 @@ public class PackageListCtrl extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		
 		String picode = request.getParameter("picode");
-		System.out.println(picode);
 		
 		PackageListSvc packageListSvc = new PackageListSvc();
 		ArrayList<PackageDate> pdList = packageListSvc.getPackageListCount(picode);
-		System.out.println(pdList.size());
 		request.setAttribute("pdList", pdList);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("front/package/package_list.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/front/package/package_list.jsp");
 		dispatcher.forward(request, response);
 	}
 	
@@ -54,7 +52,7 @@ public class PackageListCtrl extends HttpServlet {
 
 		response.setContentType("application/json; charset=UTF-8;");
 		PrintWriter out = response.getWriter();
-		out.println(packageList); // Àå¹Ù±¸´Ï ´ã±â ±â´ÉÀ» È£ÃâÇß´ø ajax¸¦ »ç¿ëÇÑ °÷À¸·Î °á°ú°ªÀ» ¸®ÅÏ
+		out.println(packageList); // ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½ï¿½ß´ï¿½ ajaxï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	}
 	
 }

@@ -16,6 +16,7 @@ import com.google.gson.JsonArray;
 import svc.PackageListSvc;
 import svc.PackageMainSvc;
 import vo.PackageDate;
+import vo.PackageInfo;
 
 @WebServlet("/package_main")
 public class PackageMainCtrl extends HttpServlet {
@@ -27,37 +28,24 @@ public class PackageMainCtrl extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
+request.setCharacterEncoding("utf-8");
 		
-		/*
-		 * String picode = request.getParameter("picode"); System.out.println(picode);
-		 * 
-		 * PackageMainSvc PackageMainSvc = new PackageMainSvc(); ArrayList<PackageDate>
-		 * pdList = PackageMainSvc.getPackageMainList("JPN"); //
-		 * System.out.println(pdList.size()); request.setAttribute("pdList", pdList);
-		 */
+		String ccid = request.getParameter("ccid");
+
 		
+		PackageMainSvc packageMainSvc = new PackageMainSvc();
+		
+		ArrayList<PackageInfo> piList = packageMainSvc.getPackageSuggest(ccid);
+		
+		request.setAttribute("piList", piList);
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("front/package/package_main.jsp");
 		dispatcher.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		
-		String ccid = request.getParameter("ccid");
-		String gbn = request.getParameter("gbn");
-		// System.out.println(ccid);
-		
-		PackageMainSvc packageMainSvc = new PackageMainSvc();
-		
-		JsonArray packageMain = packageMainSvc.getPackageMainCount(ccid, gbn);
-		
-		//System.out.println("packageMain: " + packageMain);
-		
-		response.setContentType("application/json; charset=UTF-8;");
-		PrintWriter out = response.getWriter();
-		out.println(packageMain); // 장바구니 담기 기능을 호출했던 ajax를 사용한 곳으로 결과값을 리턴
+		doGet(request, response);
 	}
 		
 }

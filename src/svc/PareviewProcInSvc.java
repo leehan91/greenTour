@@ -7,16 +7,20 @@ import dao.*;
 import vo.*;
 
 public class PareviewProcInSvc {
-	public int PareviewInsert(CsPareview cpl) {
+	public int PareviewInsert(CsPareview cp) {
 		int result = 0;
 		Connection conn = getConnection();
 		PareviewProcInDao pareviewProcInDao = PareviewProcInDao.getInstance();
 		pareviewProcInDao.setConnection(conn);
 		
-		result = pareviewProcInDao.PareviewInsert(cpl);
+		result = pareviewProcInDao.PareviewInsert(cp);
 		if (result == 1)	commit(conn);
 		else				rollback(conn);
-		// »ç¿ëÇÑ Äõ¸®°¡ insert, update, deleteÀÏ °æ¿ì ¹Ýµå½Ã Æ®·£Àè¼ÇÀ» ¿Ï·áÇØ¾ß ÇÔ
+		result = 0; 
+		result = pareviewProcInDao.PareviewUpdate(cp);
+		if (result == 1)	commit(conn);
+		else				rollback(conn);
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ insert, update, deleteï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ýµï¿½ï¿½ Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½ï¿½Ø¾ï¿½ ï¿½ï¿½
 		close(conn);
 		
 		return result;

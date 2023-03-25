@@ -19,49 +19,48 @@ public class PareviewProcInDao {
 	public void setConnection(Connection conn) {
 		this.conn = conn;
 	}
-	public int PareviewInsert(CsPareview cpl) {
+	public int PareviewInsert(CsPareview cp) {
 		Statement stmt = null;
 		ResultSet rs = null;
 		int result = 0;
 		try {			
-			String sql = "select a.cp_idx, c.cc_name, b.op_name, a.cp_score, a.mi_id, a.cp_title, " + 
-					" a.cp_date, a.cp_read, b.op_code, b.op_code from t_cs_pareview a, t_order_painfo b, t_ctgr_city c " + 
-					" where a.mi_id = '" + cpl.getMi_id() + "' and a.op_code = b.op_code and b.cc_id = c.cc_id " ;
+			String sql = "insert into t_cs_pareview(mi_id, mi_name, op_code, cp_name, cp_title,"
+					+ " cp_content, cp_score) values('" + cp.getMi_id() + "', '" + cp.getMi_name() + 
+					"', '" + cp.getOp_code() + "', '" + cp.getCp_name() + "', '" + cp.getCp_title() +
+					"', '" + cp.getCp_content() + "', '" + cp.getCp_score() + "');"; 
 			System.out.println(sql);
-				stmt = conn.createStatement();
-				rs = stmt.executeQuery(sql);
-				while(rs.next()) {
-					cpl = new CsPareview();
-					cpl.setCp_idx(cpl.getCp_idx());
-					cpl.setCc_name(rs.getString("cc_name"));
-					cpl.setOp_name(rs.getString("op_name"));
-					cpl.setOp_code(rs.getString("op_code"));
-					cpl.setCp_score(rs.getInt("cp_score"));
-					cpl.setMi_id(cpl.getMi_id());
-					cpl.setCp_title(cpl.getCp_title());
-					cpl.setCp_date(cpl.getCp_date());
-					cpl.setCp_read(cpl.getCp_read());
-					cpl.setOp_code(cpl.getOp_code());
-					
-					
-				}
-				
-			
-			sql = "insert into t_cs_pareview (cp_idx, mi_id, op_code, cp_name, cp_title, cp_content, cp_score, cp_read, cp_date, cp_isdel) " + 
-					"values ('" + cpl.getCp_idx() + 1 + "', '" + cpl.getMi_id() + "', '" + cpl.getOp_code() + "', '" + cpl.getCp_name() + "', '" + 
-					cpl.getCp_title() +"', '" + cpl.getCp_content() + "', '" + cpl.getCp_score() + "', '" + cpl.getCp_read() + "', '" + cpl.getCp_date() 
-					+ "', '"+ cpl.getCp_isdel() + "') "; 
-			System.out.println(sql);
-			
+			stmt = conn.createStatement();
 			result = stmt.executeUpdate(sql);
 			
 			
 		} catch(Exception e) {
-			System.out.println("PareviewProcInDao Å¬·¡½ºÀÇ PareviewInsert() ¸Þ¼Òµå ¿À·ù");
+			System.out.println("PareviewProcInDao Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ PareviewInsert() ï¿½Þ¼Òµï¿½ ï¿½ï¿½ï¿½ï¿½");
 			e.printStackTrace();
 		}finally {
 			close(rs); close(stmt);
 		}
 		return result;
 	}
+
+	public int PareviewUpdate(CsPareview cp) {
+		Statement stmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		try {			
+			String sql = "update t_order_painfo set op_review = 'y' where mi_id = '" + 
+		cp.getMi_id() + "' and op_code = '" + cp.getOp_code() + "'"; 
+			System.out.println(sql);
+			stmt = conn.createStatement();
+			result = stmt.executeUpdate(sql);
+			
+			
+		} catch(Exception e) {
+			System.out.println("PareviewProcInDao Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ PareviewInsert() ï¿½Þ¼Òµï¿½ ï¿½ï¿½ï¿½ï¿½");
+			e.printStackTrace();
+		}finally {
+			close(rs); close(stmt);
+		}
+		return result;
+	}
+	
 }

@@ -20,39 +20,37 @@ public class PackageProcDao {
 	public void setConnection(Connection conn) {
 		this.conn = conn;
 	}
-	public JsonArray getPackageMainCount(String ccid, String gbn) {
+	public ArrayList<PackageInfo> getPackageSuggest(String ccid) {
 		Statement stmt = null;
 		ResultSet rs = null;
-		JsonArray packageMain = new JsonArray();
-		
+		ArrayList<PackageInfo> piList = new ArrayList<PackageInfo>();
+		PackageInfo pi = null;
 		try {
-			String sql = "select a.cc_id, pi_code, pi_name, pi_img1, pi_period, FORMAT(pi_adult, 0) as pi_adult from t_ctgr_city a join t_package_info b on a.cc_id = b.cc_id where pi_isview = 'y' and a.cc_id like '" + ccid + "%'";
-			if("1".equals(gbn)) {
-				sql += " and pi_suggest = 'y' order by rand() limit 4";
-			}
+			String sql = "select a.cc_id, pi_code, pi_name, pi_img1, pi_period, format(pi_adult, 0) pi_adult "
+					+ "from t_ctgr_city a join t_package_info b on a.cc_id = b.cc_id "
+					+ "where pi_isview = 'y' and a.cc_id like '" + ccid + "%' and pi_suggest = 'n' order by rand() limit 4";
+
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 			while (rs.next()) {
-				JsonObject piDataObject = new JsonObject();
-				
-				piDataObject.addProperty("cc_id", rs.getString("cc_id"));
-				piDataObject.addProperty("pi_code", rs.getString("pi_code"));
-				piDataObject.addProperty("pi_name", rs.getString("pi_name"));
-				piDataObject.addProperty("pi_period", rs.getString("pi_period"));
-				piDataObject.addProperty("pi_img1", rs.getString("pi_img1"));
-				piDataObject.addProperty("pi_adult", rs.getString("pi_adult"));
-				packageMain.add(piDataObject);
-				// System.out.println(piDataObject);
+				pi = new PackageInfo();
+				pi.setCc_id(rs.getString("cc_id"));
+				pi.setPi_code(rs.getString("pi_code"));
+				pi.setPi_name(rs.getString("pi_name"));
+				pi.setPi_img1(rs.getString("pi_img1"));
+				pi.setPi_period(rs.getString("pi_period"));
+				pi.setPi_adult(rs.getString("pi_adult"));
+				piList.add(pi);
 			}
 			
 		} catch (Exception e) {
-			System.out.println("PackageProcDao Å¬·¡½ºÀÇ getPackageMainCount() ¸Ş¼Òµå ¿À·ù");
+			System.out.println("PackageProcDao í´ë˜ìŠ¤ì˜ getPackageSuggest() ë©”ì†Œë“œ ì˜¤ë¥˜");
 			e.printStackTrace();
 		} finally {
 			close(rs);
 			close(stmt);
 		}
-		return packageMain;
+		return piList;
 	}
 	
 	public JsonArray getPackageMainList(String ccid) {
@@ -77,7 +75,7 @@ public class PackageProcDao {
 			}
 			
 		} catch (Exception e) {
-			System.out.println("PackageProcDao Å¬·¡½ºÀÇ getPackageMainList() ¸Ş¼Òµå ¿À·ù");
+			System.out.println("PackageProcDao Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ getPackageMainList() ï¿½Ş¼Òµï¿½ ï¿½ï¿½ï¿½ï¿½");
 			e.printStackTrace();
 		} finally {
 			close(rs);
@@ -93,13 +91,14 @@ public class PackageProcDao {
 		PackageDate pd = null;
 		
 		try {
-			String sql = "select distinct a.pi_code, b.pi_name, b.pi_img1, FORMAT(b.pi_adult, 0) as pi_adult, date_format(c.fi_departure, '%Y-%m-%d') "
-					+ " as fi_departure from t_package_date a join t_package_info b on a.pi_code = b.pi_code "
-					+ " join t_flight_info c on a.fi_code = c.fi_code where a.pi_code = '" + picode + "'";
+			String sql = "select a.pi_code, a.pi_name, a.pi_img1, format(a.pi_adult, 0) pi_adult, "
+					+ "date_format(b.fi_departure, '%Y-%m-%d') as fi_departure " + 
+					"from t_package_info a, t_flight_info b " + 
+					"where a.cc_id = b.cc_id and a.pi_code = '" + picode + "'";
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 			while (rs.next()) {
-				pd = new PackageDate();		// »óÇ° Á¤º¸¸¦ ÀúÀåÇÒ ÀÎ½ºÅÏ½º »ı¼º
+				pd = new PackageDate();		
 				pd.setPi_code(rs.getString("pi_code"));
 				pd.setPi_name(rs.getString("pi_name"));
 				pd.setPi_img1(rs.getString("pi_img1"));
@@ -109,7 +108,7 @@ public class PackageProcDao {
 			}
 			
 		} catch (Exception e) {
-			System.out.println("PackageProcDao Å¬·¡½ºÀÇ getPackageListCount() ¸Ş¼Òµå ¿À·ù");
+			System.out.println("PackageProcDao í´ë˜ìŠ¤ì˜ getPackageListCount() ë©”ì†Œë“œ ì˜¤ë¥˜");
 			e.printStackTrace();
 		} finally {
 			close(rs);
@@ -155,7 +154,7 @@ public class PackageProcDao {
 			}
 			
 		} catch (Exception e) {
-			System.out.println("PackageProcDao Å¬·¡½ºÀÇ getPackageDateList() ¸Ş¼Òµå ¿À·ù");
+			System.out.println("PackageProcDao Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ getPackageDateList() ï¿½Ş¼Òµï¿½ ï¿½ï¿½ï¿½ï¿½");
 			e.printStackTrace();
 		} finally {
 			close(rs);
@@ -201,7 +200,7 @@ public class PackageProcDao {
               pi.setPi_tour(rs.getString("a.pi_tour"));
               pi.setPi_food(rs.getString("a.pi_food"));
               pi.setPi_price(rs.getInt("a.pi_price"));
-              pi.setPi_adult(rs.getInt("a.pi_adult"));
+              pi.setPi_adult(rs.getString("a.pi_adult"));
               pi.setPi_child(rs.getInt("a.pi_child"));
               pi.setCc_name(rs.getString("b.cc_name"));
               pi.setHi_name(rs.getString("c.hi_name"));
@@ -243,7 +242,7 @@ public class PackageProcDao {
            }   
            
         } catch (Exception e) {
-           System.out.println("PackageProcDao Å¬·¡½ºÀÇ getDetailInfo() ¸Ş¼Òµå ¿À·ù");
+           System.out.println("PackageProcDao Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ getDetailInfo() ï¿½Ş¼Òµï¿½ ï¿½ï¿½ï¿½ï¿½");
         } finally {
            close(rs);       close(stmt);  
         }
@@ -277,7 +276,7 @@ public class PackageProcDao {
 			
 		} catch (Exception e) {
 			
-	        System.out.println("PackageProcDao Å¬·¡½ºÀÇ getFlightInfo() ¸Ş¼Òµå ¿À·ù");
+	        System.out.println("PackageProcDao Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ getFlightInfo() ï¿½Ş¼Òµï¿½ ï¿½ï¿½ï¿½ï¿½");
 	    } finally {
 	        close(rs);       close(stmt);  
 	    }

@@ -1,7 +1,7 @@
 package vo;
 
 public class CsPareview {
-	private String mi_id, op_code, cp_name, cp_title, cp_content, cp_date, cp_isdel;
+	private String mi_id, mi_name, op_code, cp_name, cp_title, cp_content, cp_date, cp_isdel;
 	private String cc_name, op_name;
 	private int cp_idx, cp_read;
 	private float cp_score;
@@ -10,6 +10,13 @@ public class CsPareview {
 	}
 	public void setMi_id(String mi_id) {
 		this.mi_id = mi_id;
+	}
+	
+	public String getMi_name() {
+		return mi_name;
+	}
+	public void setMi_name(String mi_name) {
+		this.mi_name = mi_name;
 	}
 	public String getOp_code() {
 		return op_code;

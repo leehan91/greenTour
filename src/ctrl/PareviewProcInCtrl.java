@@ -30,17 +30,23 @@ public class PareviewProcInCtrl extends HttpServlet {
 		
 		String miid = loginInfo.getMi_id();
 		
-		String writer = request.getParameter("writer");
+		String name = request.getParameter("name");
 		String uid = request.getParameter("uid");
-		String reserve = request.getParameter("reserve");
+		String list = request.getParameter("list");
 		String title = request.getParameter("title");
 		int score = Integer.parseInt(request.getParameter("reviewStar"));
 		String content = request.getParameter("content");
 		if (content != null) 	content = getStr(content);
+		System.out.println(miid + "/" + name + "/" + uid + "/" + list + "/" 
+		+ title + "/" + score  + "/" + content);
+		String[] cpName = list.split("/");
 
 		CsPareview cp = new CsPareview(); 
 		cp.setMi_id(uid);
+		cp.setMi_name(name);
 		cp.setCp_title(title);
+		cp.setCp_name(cpName[0]);
+		cp.setOp_code(cpName[1]);
 		cp.setCp_content(content);
 		cp.setCp_score(score);
 		cp.setOp_code(cp.getOp_code());

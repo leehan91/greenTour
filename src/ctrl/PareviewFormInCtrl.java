@@ -18,24 +18,24 @@ public class PareviewFormInCtrl extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		ArrayList<CsPareview> csPareview = new ArrayList<CsPareview>();
-		CsPareview cp = new CsPareview();
+		
 		HttpSession session = request.getSession();
 		MemberInfo loginInfo = (MemberInfo)session.getAttribute("loginInfo");
-		if (loginInfo == null) {
-			response.setContentType("text/html; charset=utf-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>");
-			out.println("alert('로그인 후 사용하실 수 있습니다.');");
-			out.println("location.replace('login_form.jsp?url=pareview_form_in');");
-			out.println("</script>");
-			out.close();
-		}
+	
+		  if (loginInfo == null) { response.setContentType("text/html; charset=utf-8");
+		  PrintWriter out = response.getWriter(); out.println("<script>");
+		  out.println("alert('로그인 후 사용하실 수 있습니다.');");
+		  out.println("location.replace('login_form.jsp?url=pareview_form_in');");
+		  out.println("</script>"); out.close(); }
+		 
 		String miid = loginInfo.getMi_id();
 		
 		PareviewFormSvc pareviewFormSvc = new PareviewFormSvc();
-		ArrayList<CsPareview> formList = pareviewFormSvc.getPareviewForm(miid);
+		ArrayList<OrderPaInfo> opList = pareviewFormSvc.getPareviewForm(miid);
+
 		
-		request.setAttribute("formList", formList);
+		request.setAttribute("opList", opList);
+		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("front/review/pareview_form_in.jsp");
 		dispatcher.forward(request, response);

@@ -7,19 +7,19 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import dao.PareviewFormDao;
-import dao.PareviewListDao;
-import vo.CsPareview;
+import dao.PareviewDao;
+import vo.*;
 
 public class PareviewFormSvc {
-	public ArrayList<CsPareview> getPareviewForm(String miid) {
-		ArrayList<CsPareview> formList = new ArrayList<CsPareview>();
+	public ArrayList<OrderPaInfo> getPareviewForm(String miid) {
+		ArrayList<OrderPaInfo> opList = new ArrayList<OrderPaInfo>();
 		Connection conn = getConnection();
 		PareviewFormDao pareviewFormDao = PareviewFormDao.getInstance();
 		pareviewFormDao.setConnection(conn);
 		
-		formList = pareviewFormDao.getPareviewForm(miid);
+		opList = pareviewFormDao.getPareviewForm(miid);
 		close(conn);
 		
-		return formList;
+		return opList;
 	}
 }

@@ -10,18 +10,16 @@ import dao.*;
 import vo.*;
 
 public class PackageMainSvc {
-	public JsonArray getPackageMainCount(String ccid, String gbn) {
-		
-		JsonArray packageMain = new JsonArray();
-		
+	public ArrayList<PackageInfo> getPackageSuggest(String ccid) {
+		ArrayList<PackageInfo> pi = new ArrayList<PackageInfo>();
 		Connection conn = getConnection();
 		PackageProcDao packgeProcDao = PackageProcDao.getInstance();
 		packgeProcDao.setConnection(conn);
 		
-		packageMain = packgeProcDao.getPackageMainCount(ccid, gbn);
+		pi = packgeProcDao.getPackageSuggest(ccid);
 		close(conn);
 		
-		return packageMain;
+		return pi;
 	}
 	
 	

@@ -22,25 +22,11 @@ public class PareviewListCtrl extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		HttpSession session = request.getSession();
-		MemberInfo loginInfo = (MemberInfo)session.getAttribute("loginInfo");
-		if (loginInfo == null) {
-			response.setContentType("text/html; charset=utf-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>");
-			out.println("alert('로그인 후 사용하실 수 있습니다.');");
-			out.println("location.replace('login_form.jsp?url=pareview_list');");
-			out.println("</script>");
-			out.close();
-		}
-		
-		String miid = loginInfo.getMi_id();
-
 		int cpage = 1, psize = 10, bsize = 10, rcnt = 0, pcnt = 0, spage = 0;
 		// 현재 페이지 번호, 페이지 크기, 블록 크기, 레코드(게시글) 개수, 시작 페이지 등을 저장할 변수들
-		if (request.getParameter("cpage") != null)
+		if (request.getParameter("cpage") != null) {
 			cpage = Integer.parseInt(request.getParameter("cpage"));
-		
+		}
 		String schtype = request.getParameter("schtype");	// 검색조건(제목, 내용, 제목+내용)
 		String keyword = request.getParameter("keyword");	// 검색어
 		String where = " where cp_isdel = 'n' ";	// 검색조건이 있을 경우 where절을 저장할 변수
@@ -69,17 +55,15 @@ public class PareviewListCtrl extends HttpServlet {
 		PareviewListSvc pareviewListSvc = new PareviewListSvc();
 		rcnt = pareviewListSvc.getPareviewListCount(where);
 		
-		ArrayList<CsPareview> csPareview = pareviewListSvc.getPareviewList(where,cpage,psize,miid);
-		
+		ArrayList<CsPareview> csPareview = pareviewListSvc.getPareviewList(where,cpage,psize);
 		
 		request.setAttribute("pageInfo", pageInfo);
 		request.setAttribute("csPareview", csPareview);
 		
 		
-		
-		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("front/review/pareview_list.jsp");
 		dispatcher.forward(request, response);
+
 		
 	}
 

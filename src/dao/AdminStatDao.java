@@ -6,7 +6,7 @@ import java.sql.*;
 import vo.*;
 
 public class AdminStatDao {
-	// Åë°è °ü·ÃµÈ Äõ¸® ÀÛ¾÷µéÀ» ¸ðµÎ Ã³¸®ÇÏ´Â Å¬·¡½º
+	// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Û¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½Ï´ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½
 	private static AdminStatDao adminStatDao;
 	private Connection conn;
 	private AdminStatDao() {}	
@@ -34,7 +34,7 @@ public class AdminStatDao {
 			}
 			
 		} catch (Exception e) {
-			System.out.println("AdminStatDao Å¬·¡½ºÀÇ getPaStat() ¸Þ¼Òµå ¿À·ù");
+			System.out.println("AdminStatDao Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ getPaStat() ï¿½Þ¼Òµï¿½ ï¿½ï¿½ï¿½ï¿½");
 			e.printStackTrace();
 		} finally {
 			close(stmt);	close(rs);
@@ -58,7 +58,7 @@ public class AdminStatDao {
 			}
 			
 		} catch (Exception e) {
-			System.out.println("AdminStatDao Å¬·¡½ºÀÇ getMpStat() ¸Þ¼Òµå ¿À·ù");
+			System.out.println("AdminStatDao Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ getMpStat() ï¿½Þ¼Òµï¿½ ï¿½ï¿½ï¿½ï¿½");
 			e.printStackTrace();
 		} finally {
 			close(stmt);	close(rs);
@@ -67,7 +67,7 @@ public class AdminStatDao {
 	}	
 	
 	public ArrayList<StatInfo> getPaList(int y, int m) {
-	// ÁöÁ¤ÇÑ ¿¬¿ù¿¡ ÇØ´çÇÏ´Â Æ¯Á¤ È¸¿øÀÇ ÀÏÁ¤ ¸ñ·ÏÀ» ArrayList<ScheduleInfo>·Î ¸®ÅÏÇÏ´Â ¸Þ¼Òµå
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ï¿½Ï´ï¿½ Æ¯ï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ArrayList<ScheduleInfo>ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Þ¼Òµï¿½
 		Statement stmt = null;
 		ResultSet rs = null;
 		ArrayList<StatInfo> dateList = new ArrayList<StatInfo>();
@@ -82,14 +82,14 @@ public class AdminStatDao {
 			rs = stmt.executeQuery(sql);
 			
 			while (rs.next()) {
-				si = new StatInfo();		// ÇÏ³ªÀÇ ÀÏÁ¤ Á¤º¸¸¦ ÀúÀåÇÒ StatInfo Çü ÀÎ½ºÅÏ½º »ý¼º
+				si = new StatInfo();		// ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ StatInfo ï¿½ï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				si.setSi_paRate(rs.getString("op_code"));
 				si.setSi_paDate(rs.getString("op_leave"));
 				dateList.add(si);
 			}
 			
 		} catch (Exception e) {
-			System.out.println("AdminStatDao Å¬·¡½ºÀÇ getPaList() ¸Þ¼Òµå ¿À·ù");
+			System.out.println("AdminStatDao Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ getPaList() ï¿½Þ¼Òµï¿½ ï¿½ï¿½ï¿½ï¿½");
 			e.printStackTrace();
 		} finally {
 			close(stmt);	close(rs);
@@ -98,7 +98,7 @@ public class AdminStatDao {
 	}
 	
 	public ArrayList<StatInfo> getMpList(int y, int m) {
-	// ÁöÁ¤ÇÑ ¿¬¿ù¿¡ ÇØ´çÇÏ´Â Æ¯Á¤ È¸¿øÀÇ ÀÏÁ¤ ¸ñ·ÏÀ» ArrayList<StatInfo>·Î ¸®ÅÏÇÏ´Â ¸Þ¼Òµå
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ï¿½Ï´ï¿½ Æ¯ï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ArrayList<StatInfo>ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Þ¼Òµï¿½
 		Statement stmt = null;
 		ResultSet rs = null;
 		ArrayList<StatInfo> dateList = new ArrayList<StatInfo>();
@@ -113,14 +113,14 @@ public class AdminStatDao {
 			rs = stmt.executeQuery(sql);
 			
 			while (rs.next()) {
-				si = new StatInfo();		// ÇÏ³ªÀÇ ÀÏÁ¤ Á¤º¸¸¦ ÀúÀåÇÒ ScheduleInfo Çü ÀÎ½ºÅÏ½º »ý¼º
+				si = new StatInfo();		// ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ScheduleInfo ï¿½ï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				si.setSi_mpRate(rs.getString("om_code"));
 				si.setSi_mpDate(rs.getString("om_leave"));
 				dateList.add(si);
 			}
 			
 		} catch (Exception e) {
-			System.out.println("AdminStatDao Å¬·¡½ºÀÇ getMpList() ¸Þ¼Òµå ¿À·ù");
+			System.out.println("AdminStatDao Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ getMpList() ï¿½Þ¼Òµï¿½ ï¿½ï¿½ï¿½ï¿½");
 			e.printStackTrace();
 		} finally {
 			close(stmt);	close(rs);
@@ -129,7 +129,7 @@ public class AdminStatDao {
 	}	
 	
 	public ArrayList<StatInfo> getPaListStat(int y, int sm, int em) {
-	// ÁöÁ¤ ±â°£ ³»¿¡ ¸ÅÃâ¾×À» ÀúÀå
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½â°£ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		Statement stmt = null;
 		ResultSet rs = null;
 		ArrayList<StatInfo> List = new ArrayList<StatInfo>();
@@ -143,13 +143,13 @@ public class AdminStatDao {
 			rs = stmt.executeQuery(sql);
 			
 			while (rs.next()) {
-				si = new StatInfo();		// ÇÏ³ªÀÇ ÀÏÁ¤ Á¤º¸¸¦ ÀúÀåÇÒ StatInfo Çü ÀÎ½ºÅÏ½º »ý¼º
+				si = new StatInfo();		// ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ StatInfo ï¿½ï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				si.setSi_paAmount(rs.getInt("pay"));
 				List.add(si);
 			}
 			
 		} catch (Exception e) {
-			System.out.println("AdminStatDao Å¬·¡½ºÀÇ getPaListStat() ¸Þ¼Òµå ¿À·ù");
+			System.out.println("AdminStatDao Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ getPaListStat() ï¿½Þ¼Òµï¿½ ï¿½ï¿½ï¿½ï¿½");
 			e.printStackTrace();
 		} finally {
 			close(stmt);	close(rs);
@@ -159,7 +159,7 @@ public class AdminStatDao {
 	
 	
 	public ArrayList<StatInfo> getMpListStat(int y, int sm, int em) {
-	// ÁöÁ¤ ±â°£ ³»¿¡ ¸ÅÃâ¾×À» ÀúÀå
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½â°£ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		Statement stmt = null;
 		ResultSet rs = null;
 		ArrayList<StatInfo> List = new ArrayList<StatInfo>();
@@ -173,13 +173,13 @@ public class AdminStatDao {
 			rs = stmt.executeQuery(sql);
 			
 			while (rs.next()) {
-				si = new StatInfo();		// ÇÏ³ªÀÇ ÀÏÁ¤ Á¤º¸¸¦ ÀúÀåÇÒ StatInfo Çü ÀÎ½ºÅÏ½º »ý¼º
+				si = new StatInfo();		// ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ StatInfo ï¿½ï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				si.setSi_mpAmount(rs.getInt("pay"));
 				List.add(si);
 			}
 			
 		} catch (Exception e) {
-			System.out.println("AdminStatDao Å¬·¡½ºÀÇ getMpListStat() ¸Þ¼Òµå ¿À·ù");
+			System.out.println("AdminStatDao Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ getMpListStat() ï¿½Þ¼Òµï¿½ ï¿½ï¿½ï¿½ï¿½");
 			e.printStackTrace();
 		} finally {
 			close(stmt);	close(rs);
@@ -204,7 +204,7 @@ public class AdminStatDao {
 			}
 			
 		} catch (Exception e) {
-			System.out.println("AdminStatDao Å¬·¡½ºÀÇ getCcpaAmount() ¸Þ¼Òµå ¿À·ù");
+			System.out.println("AdminStatDao Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ getCcpaAmount() ï¿½Þ¼Òµï¿½ ï¿½ï¿½ï¿½ï¿½");
 			e.printStackTrace();
 		} finally {
 			close(stmt);	close(rs);
@@ -230,7 +230,7 @@ public class AdminStatDao {
 			}
 			
 		} catch (Exception e) {
-			System.out.println("AdminStatDao Å¬·¡½ºÀÇ getCcmpAmount() ¸Þ¼Òµå ¿À·ù");
+			System.out.println("AdminStatDao Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ getCcmpAmount() ï¿½Þ¼Òµï¿½ ï¿½ï¿½ï¿½ï¿½");
 			e.printStackTrace();
 		} finally {
 			close(stmt);	close(rs);
@@ -255,7 +255,7 @@ public class AdminStatDao {
 			}
 			
 		} catch (Exception e) {
-			System.out.println("AdminStatDao Å¬·¡½ºÀÇ getRq() ¸Þ¼Òµå ¿À·ù");
+			System.out.println("AdminStatDao Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ getRq() ï¿½Þ¼Òµï¿½ ï¿½ï¿½ï¿½ï¿½");
 			e.printStackTrace();
 		} finally {
 			close(stmt);	close(rs);
@@ -281,7 +281,7 @@ public StatInfo getRqYes(int y, int m) {
 			}
 			
 		} catch (Exception e) {
-			System.out.println("AdminStatDao Å¬·¡½ºÀÇ getRqYes() ¸Þ¼Òµå ¿À·ù (´äº¯ ¿Ï·á)");
+			System.out.println("AdminStatDao Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ getRqYes() ï¿½Þ¼Òµï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½äº¯ ï¿½Ï·ï¿½)");
 			e.printStackTrace();
 		} finally {
 			close(stmt);	close(rs);
@@ -307,7 +307,7 @@ public StatInfo getRqNo(int y, int m) {
 			}
 			
 		} catch (Exception e) {
-			System.out.println("AdminStatDao Å¬·¡½ºÀÇ getRqNo() ¸Þ¼Òµå ¿À·ù (´äº¯ ¹Ì¿Ï·á)");
+			System.out.println("AdminStatDao Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ getRqNo() ï¿½Þ¼Òµï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½äº¯ ï¿½Ì¿Ï·ï¿½)");
 			e.printStackTrace();
 		} finally {
 			close(stmt);	close(rs);
@@ -332,7 +332,7 @@ public StatInfo getMemStat() {
 		}
 		
 	} catch (Exception e) {
-		System.out.println("AdminStatDao Å¬·¡½ºÀÇ getMemStat() ¸Þ¼Òµå ¿À·ù");
+		System.out.println("AdminStatDao Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ getMemStat() ï¿½Þ¼Òµï¿½ ï¿½ï¿½ï¿½ï¿½");
 		e.printStackTrace();
 	} finally {
 		close(stmt);	close(rs);
@@ -354,7 +354,7 @@ public StatInfo getMemAStat() {
 		}
 		
 	} catch (Exception e) {
-		System.out.println("AdminStatDao Å¬·¡½ºÀÇ getMemAStat() ¸Þ¼Òµå ¿À·ù");
+		System.out.println("AdminStatDao Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ getMemAStat() ï¿½Þ¼Òµï¿½ ï¿½ï¿½ï¿½ï¿½");
 		e.printStackTrace();
 	} finally {
 		close(stmt);	close(rs);
@@ -372,12 +372,12 @@ public StatInfo getMemBStat() {
 		stmt = conn.createStatement();
 		rs = stmt.executeQuery(sql);		
 		while (rs.next()) {
-			si = new StatInfo();		// ÆÐÅ°Áö ÆÇ¸Å Á¤º¸¸¦ ÀúÀåÇÒ StatInfo Çü ÀÎ½ºÅÏ½º »ý¼º
+			si = new StatInfo();		// ï¿½ï¿½Å°ï¿½ï¿½ ï¿½Ç¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ StatInfo ï¿½ï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			si.setSi_memberB(rs.getInt("num"));
 		}
 		
 	} catch (Exception e) {
-		System.out.println("AdminStatDao Å¬·¡½ºÀÇ getMemBStat() ¸Þ¼Òµå ¿À·ù");
+		System.out.println("AdminStatDao Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ getMemBStat() ï¿½Þ¼Òµï¿½ ï¿½ï¿½ï¿½ï¿½");
 		e.printStackTrace();
 	} finally {
 		close(stmt);	close(rs);
@@ -397,18 +397,22 @@ public StatInfo getMemDStat() {
 		rs = stmt.executeQuery(sql);
 		
 		while (rs.next()) {
-			si = new StatInfo();		// ÆÐÅ°Áö ÆÇ¸Å Á¤º¸¸¦ ÀúÀåÇÒ StatInfo Çü ÀÎ½ºÅÏ½º »ý¼º
+			si = new StatInfo();		// ï¿½ï¿½Å°ï¿½ï¿½ ï¿½Ç¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ StatInfo ï¿½ï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			si.setSi_memberD(rs.getInt("num"));
 		}
 		
 	} catch (Exception e) {
-		System.out.println("AdminStatDao Å¬·¡½ºÀÇ getMemDStat() ¸Þ¼Òµå ¿À·ù");
+		System.out.println("AdminStatDao Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ getMemDStat() ï¿½Þ¼Òµï¿½ ï¿½ï¿½ï¿½ï¿½");
 		e.printStackTrace();
 	} finally {
 		close(stmt);	close(rs);
 	}
 	return si;
 
+}
+public ArrayList<StatInfo> getpaList(int y, int m) {
+	// TODO Auto-generated method stub
+	return null;
 }		
 
 	
