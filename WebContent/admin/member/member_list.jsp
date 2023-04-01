@@ -16,19 +16,22 @@ if (schtype != null && !schtype.equals("") && keyword != null && !keyword.equals
 args = "&cpage=" + cpage + schargs;
 %>
 <style>
-.main {display:flex; justify-content: space-around;; margin-top:100px;}
+
 .ctgr {width:200px;}
 .memberList {width:830px;}
 </style>
-<div class="main">
-	<div class="ctgr">
-		<p><a href="member_list">회원 관리</a></p><hr />
-		<p><a href="">도시 관리</a></p><hr />
-		<p><a href="">게시판 관리</a></p><hr />
-		<p><a href="admin_package_list">상품 관리</a></p><hr />
-		<p><a href="">고객센터</a></p><hr />
-		<p><a href="/greenTourSite/admin_amount">통계</a></p>
-	</div>
+<main class="side_menu">
+	<ul class="ctgr">
+		<li><a href="member_list">회원 관리</a><br/>
+		 <span>&nbsp;&nbsp;&nbsp;<a href="member_list"> - 회원 목록</a></span><br/>
+		 <span>&nbsp;&nbsp;&nbsp;<a href="member_reservation_list"> - 예약 취소</a></span>
+		</li><hr />
+		<li><a href="">도시 관리</a></li><hr />
+		<li><a href="">게시판 관리</a></li><hr />
+		<li><a href="/greenTourSite/admin_package_list">상품 관리</a><br /></li><hr />
+		<li><a href="">고객센터</a></li><hr />
+		<li><a href="/greenTourSite/admin_amount">통계</a></li>
+	</ul>
 	<div class="memberList">
 		<h2>회원 목록</h2><hr />
 		
@@ -128,6 +131,6 @@ if (rcnt > 0) {		// 게시글이 있으면 - 페이징 영역을 보여줌
 	</tr>	
 		</table>
 	</div>
-</div>
+</main>
 </body>
 </html>

@@ -15,56 +15,57 @@ import vo.*;
 
 @WebServlet("/pareview_list")
 public class PareviewListCtrl extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+   private static final long serialVersionUID = 1L;
     public PareviewListCtrl() {
         super();
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		int cpage = 1, psize = 10, bsize = 10, rcnt = 0, pcnt = 0, spage = 0;
-		// ÇöÀç ÆäÀÌÁö ¹øÈ£, ÆäÀÌÁö Å©±â, ºí·Ï Å©±â, ·¹ÄÚµå(°Ô½Ã±Û) °³¼ö, ½ÃÀÛ ÆäÀÌÁö µîÀ» ÀúÀåÇÒ º¯¼öµé
-		if (request.getParameter("cpage") != null) {
-			cpage = Integer.parseInt(request.getParameter("cpage"));
-		}
-		String schtype = request.getParameter("schtype");	// °Ë»öÁ¶°Ç(Á¦¸ñ, ³»¿ë, Á¦¸ñ+³»¿ë)
-		String keyword = request.getParameter("keyword");	// °Ë»ö¾î
-		String where = " where cp_isdel = 'n' ";	// °Ë»öÁ¶°ÇÀÌ ÀÖÀ» °æ¿ì whereÀıÀ» ÀúÀåÇÒ º¯¼ö
-		if (schtype == null || keyword == null) {
-			schtype = "";			keyword = "";
-			// È­¸é»óÀÇ °Ë»ö¾î°¡ 'null'·Î º¸ÀÌÁö ¾Ê°Ô ÇÏ±â À§ÇØ ºó ¹®ÀÚ¿­·Î Ã¤¿ò
-		} else if (!schtype.contentEquals("") && !keyword.contentEquals("")) {
-			// °Ë»öÁ¶°Ç°ú °Ë»ö¾î°¡ ¸ğµÎ ÀÖÀ» °æ¿ì
-			URLEncoder.encode(keyword, "UTF-8");
-			// Äõ¸®½ºÆ®¸µÀ¸·Î ÁÖ°í ¹Ş´Â °Ë»ö¾î°¡ ÇÑ±ÛÀÏ °æ¿ì ºê¶ó¿ìÀú¿¡ µû¶ó ¹®Á¦°¡ ¹ß»ıÇÒ ¼ö ÀÖÀ¸¹Ç·Î À¯´ÏÄÚµå·Î º¯È¯
-			if (schtype.equals("tc")) { // °Ë»ö Á¶°ÇÀÌ 'Á¦¸ñ+³»¿ë'ÀÏ °æ¿ì
-				where += " and (cp_title like '%" + keyword + "%' or cp_content like '%" + 
-						keyword + "%')";
-			} else {	// °Ë»ö Á¶°ÇÀÌ 'Á¦¸ñ'ÀÌ³ª '³»¿ë'ÀÏ °æ¿ì
-				where += "and cp_" + schtype + " like '%" + keyword +"%' ";
-			}
-		}
-		
-		PageInfo pageInfo = new PageInfo();
-		pageInfo.setBsize(bsize);			pageInfo.setCpage(cpage);
-		pageInfo.setPcnt(pcnt);				pageInfo.setPsize(psize);
-		pageInfo.setRcnt(rcnt);				pageInfo.setSpage(spage);
-		pageInfo.setSchtype(schtype);		pageInfo.setKeyword(keyword);
-		// ÆäÀÌÂ¡°ú °Ë»ö¿¡ ÇÊ¿äÇÑ Á¤º¸µéÀ» PageInfoÇü ÀÎ½ºÅÏ½º¿¡ ÀúÀå
+   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      request.setCharacterEncoding("utf-8");
+      int cpage = 1, psize = 10, bsize = 10, rcnt = 0, pcnt = 0, spage = 0;
+      // í˜„ì¬ í˜ì´ì§€ ë²ˆí˜¸, í˜ì´ì§€ í¬ê¸°, ë¸”ë¡ í¬ê¸°, ë ˆì½”ë“œ(ê²Œì‹œê¸€) ê°œìˆ˜, ì‹œì‘ í˜ì´ì§€ ë“±ì„ ì €ì¥í•  ë³€ìˆ˜ë“¤
+      if (request.getParameter("cpage") != null) {
+         cpage = Integer.parseInt(request.getParameter("cpage"));
+      }
+      String schtype = request.getParameter("schtype");   // ê²€ìƒ‰ì¡°ê±´(ì œëª©, ë‚´ìš©, ì œëª©+ë‚´ìš©)
+      String keyword = request.getParameter("keyword");   // ê²€ìƒ‰ì–´
+      String where = " where cp_isdel = 'n' ";   // ê²€ìƒ‰ì¡°ê±´ì´ ìˆì„ ê²½ìš° whereì ˆì„ ì €ì¥í•  ë³€ìˆ˜
+      if (schtype == null || keyword == null) {
+         schtype = "";         keyword = "";
+         // í™”ë©´ìƒì˜ ê²€ìƒ‰ì–´ê°€ 'null'ë¡œ ë³´ì´ì§€ ì•Šê²Œ í•˜ê¸° ìœ„í•´ ë¹ˆ ë¬¸ìì—´ë¡œ ì±„ì›€
+      } else if (!schtype.contentEquals("") && !keyword.contentEquals("")) {
+         // ê²€ìƒ‰ì¡°ê±´ê³¼ ê²€ìƒ‰ì–´ê°€ ëª¨ë‘ ìˆì„ ê²½ìš°
+         URLEncoder.encode(keyword, "UTF-8");
+         // ì¿¼ë¦¬ìŠ¤íŠ¸ë§ìœ¼ë¡œ ì£¼ê³  ë°›ëŠ” ê²€ìƒ‰ì–´ê°€ í•œê¸€ì¼ ê²½ìš° ë¸Œë¼ìš°ì €ì— ë”°ë¼ ë¬¸ì œê°€ ë°œìƒí•  ìˆ˜ ìˆìœ¼ë¯€ë¡œ ìœ ë‹ˆì½”ë“œë¡œ ë³€í™˜
+         if (schtype.equals("name")) { // ê²€ìƒ‰ ì¡°ê±´ì´ 'ë„ì‹œëª…'ì¼ ê²½ìš°
+            where += " and cp_name like '%" + keyword + "%'";
+         } else if(schtype.equals("title")){   // ê²€ìƒ‰ ì¡°ê±´ì´ ' íŒ¨í‚¤ì§€ëª…' ì¼ê²½ìš°
+            where += " and b.op_name like '%" + keyword + "%'";
+         } else if(schtype.equals("writer")){   // ê²€ìƒ‰ì¡°ê±´ì´ 'ì‘ì„±ì'ì¼ê²½ìš°
+            where += " and mi_name like '%" + keyword + "%'";
+         }
+      }
+      
+      PareviewListSvc pareviewListSvc = new PareviewListSvc();
+      rcnt = pareviewListSvc.getPareviewListCount(where);
+      
+      ArrayList<CsPareview> csPareview = pareviewListSvc.getPareviewList(where,cpage,psize);
+      
+      PageInfo pageInfo = new PageInfo();
+      pageInfo.setBsize(bsize);         pageInfo.setCpage(cpage);
+      pageInfo.setPcnt(pcnt);            pageInfo.setPsize(psize);
+      pageInfo.setRcnt(rcnt);            pageInfo.setSpage(spage);
+      pageInfo.setSchtype(schtype);      pageInfo.setKeyword(keyword);
+      // í˜ì´ì§•ê³¼ ê²€ìƒ‰ì— í•„ìš”í•œ ì •ë³´ë“¤ì„ PageInfoí˜• ì¸ìŠ¤í„´ìŠ¤ì— ì €ì¥
+      
+      request.setAttribute("pageInfo", pageInfo);
+      request.setAttribute("csPareview", csPareview);
+      
+      
+      RequestDispatcher dispatcher = request.getRequestDispatcher("front/review/pareview_list.jsp");
+      dispatcher.forward(request, response);
 
-		PareviewListSvc pareviewListSvc = new PareviewListSvc();
-		rcnt = pareviewListSvc.getPareviewListCount(where);
-		
-		ArrayList<CsPareview> csPareview = pareviewListSvc.getPareviewList(where,cpage,psize);
-		
-		request.setAttribute("pageInfo", pageInfo);
-		request.setAttribute("csPareview", csPareview);
-		
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("front/review/pareview_list.jsp");
-		dispatcher.forward(request, response);
-
-		
-	}
+      
+   }
 
 }

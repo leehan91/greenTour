@@ -36,8 +36,10 @@ request.setCharacterEncoding("utf-8");
 		PackageMainSvc packageMainSvc = new PackageMainSvc();
 		
 		ArrayList<PackageInfo> piList = packageMainSvc.getPackageSuggest(ccid);
+		ArrayList<PackageInfo> piList2 = packageMainSvc.getPackageSlide(ccid);
 		
 		request.setAttribute("piList", piList);
+		request.setAttribute("piList2", piList2);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("front/package/package_main.jsp");
 		dispatcher.forward(request, response);

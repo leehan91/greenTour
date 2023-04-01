@@ -3,9 +3,13 @@
 <%@ include file="../../_inc/inc_head.jsp" %>
 <%
 request.setCharacterEncoding("utf-8");
-ArrayList<CsPareview> formList = (ArrayList<CsPareview>)request.getAttribute("formList");
-CsPareview cp = (CsPareview)request.getAttribute("csPareview");
-
+ArrayList<OrderPaInfo> opList = (ArrayList<OrderPaInfo>)request.getAttribute("opList");
+OrderPaInfo op = null;
+String opCode = ""; 		
+for(int i = 0; i<opList.size(); i++) {
+	op = opList.get(i);
+	opCode = op.getOp_code();
+}
 
 %>
 <style>
@@ -13,6 +17,8 @@ CsPareview cp = (CsPareview)request.getAttribute("csPareview");
 #content{width:"695px"}
 .red {color:#ff0000; font-size:0.8em}
 .borNon {border:none;}
+.button {width: 90px; height: 70px; margin: 0 auto; text-align: center; display: block;}
+.warning{text-align:center; font-size: 3em; margin: 350px auto;}
 #myform {
 	display: form;
 }
@@ -51,9 +57,17 @@ if (frm.reserve.value == ""){alert("내용을 입력하세요");}
 else{ location.href="pareview_proc_in"};	
 }
 
+
+
+
+
 </script>
+<%
+if(op != null ){
+%>
 <h2>리뷰 작성하기</h2>
 <hr />
+
 <div align="right" width="300"><span class="red">* </span>는 필수 정보입니다.</div>
 
 <form name="frm" action="pareview_proc_in" method="post">
@@ -62,24 +76,33 @@ else{ location.href="pareview_proc_in"};
 		<tr>
 		<th width="35%">예약자명</th>
 		<td width="*">
-		<input type="text" class="borNon" name="writer" value="<%=loginInfo.getMi_name() %>"
+		<input type="text" class="borNon" name="name" value="<%=op.getOp_customer() %>"
 		readonly="readonly" onfocus="this.blur();"/></td>
 		</tr>
 		<tr>
 			<th>아이디</th>
 			<td>
-			<input type="text" class="borNon" name="uid" value="<%=loginInfo.getMi_id() %>"
+			<input type="text" class="borNon" name="uid" value="<%=op.getMi_id() %>"
 		readonly="readonly" onfocus="this.blur();"/></td>
 			</td>
 		</tr>
 		<tr>
+		
 			<th><span class="red">* </span>예약내역</th>
 			<td>
-				<select name="reserve">
-					<option value="" selected="selected">예약내역</option>
-					<option value="packages" >패키지</option>
-					<option value="mypackage" >나의 패키지</option>
+				<select name="list">
+					<option value="">패키지이름</option>
+<%
+for(int i = 0 ; i < opList.size() ; i++) {
+	OrderPaInfo op2 = opList.get(i); 	
+
+%>
+					<option value="<%=op2.getOp_name()%>/<%=op2.getOp_code() %>"><%=op2.getOp_name() %>/<%=op2.getOp_code() %></option>
+					
+<%}	%>
 				</select>
+					
+
 			</td>
 		</tr>
 		<tr>
@@ -119,5 +142,12 @@ else{ location.href="pareview_proc_in"};
 	<input type="button" class="button" value="취소" onclick="history.back();" />
 	<input type="button" class="button" value="신청" onclick="submit()" />
 </form>
+<%}else{
+%>
+	<p class="warning">등록하실 리뷰가 없습니다.<p>
+	<input type="button" class="button" value="뒤로가기" onclick="history.back();" />
+<%} %>	
+
+
 </body>
 </html>

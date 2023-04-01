@@ -66,31 +66,16 @@ function aa() {
 	
 </script>
 <style>
-span, object, h1, h2, h3, h4, h5, h6, p, pre, a, address, big, code, del, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
-    margin: 0;
-    padding: 0;
-}
-
-ul, li, a{list-style: none; padding:0; color:#000; text-decoration:none;}
-body{width:1130px; margin:0 auto;}
-#main {float:left;}
-.ctgr {width:200px;}
-
-.goods thead tr th {
-	border: 1px solid black;
-}
-.m {
-margin-top: 120px;
-}
+.hotel_list{width:830px;}
 .sch {
 	margin: 0 auto;
 }
-.goods tbody tr td {
+.goods {border:1px solid #000;}
+.goods tbody tr td, .goods thead tr th  {
     position: relative;
     padding: 10px 10px 12px 10px;
     font-size: 13px;
-    border-left: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
+    border: 1px solid #ccc;
     word-wrap: break-word;
     word-break: break-all;
     letter-spacing: -0.04em;
@@ -114,36 +99,35 @@ margin-top: 120px;
 }
 </style>
 <body>
-<div class="m">
-<main id="main">
-   <ul class="ctgr">
-      <li><a href="/greenTourSite/member_list">회원 관리</a></li><hr />
-      <li><a href="">도시 관리</a></li><hr />
-      <li><a href="">게시판 관리</a></li><hr />
-      <li>
+
+<main class="side_menu">
+	<ul class="ctgr">
+		<li><a href="member_list">회원 관리</a></li><hr />
+		<li><a href="">도시 관리</a></li><hr />
+		<li><a href="">게시판 관리</a></li><hr />
+		<li>
          <a href="/greenTourSite/admin_package_list">상품 관리</a><br />
          <span>&nbsp;&nbsp;&nbsp;<a href="/greenTourSite/admin_package_list"> - 패키지 관리</a></span><br />
-	         <span>&nbsp;&nbsp;&nbsp;<a href="/greenTourSite/hotel_list"> - 호텔 관리</a></span><br />
-	         <span>&nbsp;&nbsp;&nbsp;<a href="/greenTourSite/tour_list"> - 관광 상품 관리</a><br />
-      </li><hr />
-      <li><a href="">고객센터</a></li><hr />
-      <li><a href="/greenTourSite/admin_amount">통계</a></li>
-   </ul>
-</main>
+	     <span>&nbsp;&nbsp;&nbsp;<strong><a href="/greenTourSite/hotel_list"> - 호텔 관리</a></strong></span><br />
+	     <span>&nbsp;&nbsp;&nbsp;<a href="/greenTourSite/tour_list"> - 관광 상품 관리</a><br />
+      	</li><hr />
+		<li><a href="">고객센터</a></li><hr />
+		<li><a href="/greenTourSite/admin_amount">통계</a></li>
+	</ul>
 	<div class="hotel_list">
 		<div class="table">
 			<div class="table_inner">
 				<table class="goods"> 
 					<colgroup>
-						<col style="width:122;">
-						<col style="width:90px;">
-						<col style="width:90px;">
-						<col style="width:61px;">
-						<col style="width:151px;">
-						<col style="width:373px;">
-						<col style="width:123px;">
-						<col style="width:50px;">
-						<col style="width:50px;">
+						<col style="width:105px;">
+						<col style="width:55px;">
+						<col style="width:55px;">
+						<col style="width:55px;">
+						<col style="width:101px;">
+						<col style="width:290px;">
+						<col style="width:110px;">
+						<col style="width:45px;">
+						<col style="width:45px;">
 					</colgroup>
 					<thead>
 						<tr>
@@ -165,6 +149,10 @@ margin-top: 120px;
 						for (int i = 0; i < hotelList.size(); i++) {
 							HotelInfo hi = hotelList.get(i);
 							String hicode = hi.getHi_code();
+							String addr = hi.getHi_addr();
+							
+							if (addr.length() > 40)
+								addr = addr.substring(0,37) + "...";
 						
 					%>
 						<tr>
@@ -173,7 +161,7 @@ margin-top: 120px;
 							<td scope="col"><%=hi.getCc_city() %></td>
 							<td scope="col"><%=hi.getHi_grade() %></td>
 							<td scope="col"><%=hi.getHi_name() %></td>
-							<td scope="col"><%=hi.getHi_addr() %></td>
+							<td scope="col"><%=addr %></td>
 							<td scope="col">+<%=hi.getHi_tel() %></td>
 							<td scope="col"><a href="hotel_edit?hicode=<%=hicode %>"><img id="edit" src="/greenTourSite/front/img/edit.png"></a></td>
 							<td scope="col"><input type='checkbox' name='del' class="test" value="<%=hicode %>"/><br /></td>
@@ -248,6 +236,6 @@ margin-top: 120px;
 			</div>
 		</div>
 	</div>
-</div>
+</main>
 </body>
 </html>

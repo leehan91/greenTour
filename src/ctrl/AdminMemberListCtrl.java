@@ -46,12 +46,12 @@ public class AdminMemberListCtrl extends HttpServlet {
 		pageInfo.setSpage(spage);
 		pageInfo.setSchtype(schtype);
 		pageInfo.setKeyword(keyword);
-		// ÆäÀÌÂ¡°ú °Ë»ö¿¡ ÇÊ¿äÇÑ Á¤º¸µéÀ» PageInfoÇü ÀÎ½ºÅÏ½º¿¡ ÀúÀå
+		// ï¿½ï¿½ï¿½ï¿½Â¡ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ PageInfoï¿½ï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		
 		request.setAttribute("memberList", memberList);
 		request.setAttribute("pageInfo", pageInfo);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("admin/member/member_list.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/greenTour/admin/member/member_list.jsp");
 		dispatcher.forward(request, response);
 	}
 

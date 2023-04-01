@@ -27,9 +27,9 @@ header{width: 1130px;
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<script src="/greenTourSite/js/jquery-3.6.1.js"></script>
-<script src = "/greenTourSite/js/utils.js"></script>
-<script src = "/greenTourSite/js/Chart.min.js"></script>
+<script src="/greenTour/js/jquery-3.6.1.js"></script>
+<script src = "/greenTour/js/utils.js"></script>
+<script src = "/greenTour/js/Chart.min.js"></script>
 <style>
 .m_menu { width:1130px; 
     display: flex;

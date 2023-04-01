@@ -95,6 +95,7 @@ public class PackageProcDao {
 					+ "date_format(b.fi_departure, '%Y-%m-%d') as fi_departure " + 
 					"from t_package_info a, t_flight_info b " + 
 					"where a.cc_id = b.cc_id and a.pi_code = '" + picode + "'";
+			System.out.println(sql);
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 			while (rs.next()) {
@@ -123,7 +124,7 @@ public class PackageProcDao {
 		JsonArray packageList = new JsonArray();
 		
 		try {
-			String sql = "select a.pi_code, b.fi_entry, b.fi_departure, b.fi_cityleave, c.fr_img, c.fr_name, d.pi_period, "
+			String sql = "select a.pi_code, b.fi_entry, b.fi_departure, b.fi_cityleave, c.fr_name, d.pi_period, "
 					+ "d.pi_name, FORMAT(d.pi_price, 0) as pi_price, d.pi_stock, d.pi_sale "
 					+ " from t_package_date a "
 					+ " join t_flight_info b on a.fi_code = b.fi_code "
@@ -132,6 +133,7 @@ public class PackageProcDao {
 					+ " where c.fr_grade = 'a' "
 					+ " and a.pi_code = '"+picode+"'"
 					+ " and date_format(b.fi_departure, '%Y-%m-%d') = '"+fiDeparture+"'";
+			System.out.println(sql);
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 			while (rs.next()) {
@@ -282,5 +284,36 @@ public class PackageProcDao {
 	    }
 		
 		return fi;
+	}
+	public ArrayList<PackageInfo> getPackageSlide(String ccid) {
+		Statement stmt = null;
+		ResultSet rs = null;
+		ArrayList<PackageInfo> piList2 = new ArrayList<PackageInfo>();
+		PackageInfo pi = null;
+		try {
+			String sql = "select a.cc_id, pi_code, pi_name, pi_img1,  format(pi_adult, 0) pi_adult "
+					+ "from t_ctgr_city a join t_package_info b on a.cc_id = b.cc_id "
+					+ "where pi_isview = 'y' and a.cc_id like '" + ccid + "%' order by rand() limit 3";
+
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				pi = new PackageInfo();
+				pi.setCc_id(rs.getString("cc_id"));
+				pi.setPi_code(rs.getString("pi_code"));
+				pi.setPi_name(rs.getString("pi_name"));
+				pi.setPi_img1(rs.getString("pi_img1"));
+				pi.setPi_adult(rs.getString("pi_adult"));
+				piList2.add(pi);
+			}
+			
+		} catch (Exception e) {
+			System.out.println("PackageProcDao 클래스의 getPackageSuggest() 메소드 오류");
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(stmt);
+		}
+		return piList2;
 	}
 }

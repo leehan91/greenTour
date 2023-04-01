@@ -21,6 +21,18 @@ public class PackageMainSvc {
 		
 		return pi;
 	}
+
+	public ArrayList<PackageInfo> getPackageSlide(String ccid) {
+		ArrayList<PackageInfo> pi2 = new ArrayList<PackageInfo>();
+		Connection conn = getConnection();
+		PackageProcDao packgeProcDao = PackageProcDao.getInstance();
+		packgeProcDao.setConnection(conn);
+		
+		pi2 = packgeProcDao.getPackageSlide(ccid);
+		close(conn);
+		
+		return pi2;
+	}
 	
 	
 	/*

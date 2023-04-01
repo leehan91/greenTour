@@ -4,7 +4,11 @@
 <%@ include file="../../_inc/inc_head.jsp"%>
 <%
 ArrayList<PackageInfo> piList = (ArrayList<PackageInfo>)request.getAttribute("piList");
-PackageInfo pi = null;
+ArrayList<PackageInfo> piList2 = (ArrayList<PackageInfo>)request.getAttribute("piList2");
+PackageInfo pi = null, pi2 = null;
+for(int i = 0; i < piList.size(); i++){
+	pi = piList.get(i);
+}
 %>
 
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -13,93 +17,6 @@ PackageInfo pi = null;
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 
- <!-- 
-<script>
-var befActive; // 이전 active값
-var defaultValue = "JPN"; // 일본
-
-function city(chkRs) {
-	$("#"+befActive).removeClass("active"); // 이전 클릭된 active값 제거
-	var data = new Object();
-	data.ccid = chkRs;
-	data.gbn = 1;
-	$.ajax({
-		type : "POST",
-		url : "/greenTourSite/package_main", 
-		data : data,
-		success : function(packageMain) {
-			$("#"+chkRs).addClass("active"); // 현재 클릭한곳에 active값 추가
-			for (var i = 0; i < packageMain.length; i++) {
-				var ccId = packageMain[i].cc_id;
-				var pIcode = packageMain[i].pi_code;
-				var pIname = packageMain[i].pi_name;
-				var pIimg1 = packageMain[i].pi_img1;
-				var pIadult = packageMain[i].pi_adult;
-				
-				$('.city' + i).find('img').attr("src", "/greenTourSite/front/img/"+packageMain[i].pi_img1);
-				$('.city' + i).find('a').attr("href", "package_list?picode=" + packageMain[i].pi_code);
-				$('.city' + i).find('.info').find('.name').text(packageMain[i].pi_name);
-				$('.city' + i).find('.info').find('.price').find('strong').text(packageMain[i].pi_adult);
-			}
-		}
-	});
-	
-	befActive = chkRs; // 현재값이 전에 선택한 값이 됨
-}
-
-
-function slideData(chkRs) {
-	var data = new Object();
-	data.ccid = chkRs;
-	data.gbn = 2;
-	
-	$.ajax({
-		type : "POST",
-		url : "/greenTourSite/package_main",
-		data : data,
-		success : function(packageMain) {
-			$(".multiple-items").remove();
-			$(".tourslide").append("<div class='multiple-items'></div>");
-			
-			for (var i = 0; i < packageMain.length; i++) {
-				var ccId = packageMain[i].cc_id;
-				var pIcode = packageMain[i].pi_code;
-				var pIname = packageMain[i].pi_name;
-				var pIimg1 = packageMain[i].pi_img1;
-				var pIadult = packageMain[i].pi_adult;
-				
-				$(".multiple-items").append(
-					"<a class='sltag' href='package_list?picode="+pIcode+"'>"
-					+"<div class='slider_content'>"
-					+"	<span class='slimg'>"
-					+"	<img src='/greenTourSite/front/img/"+pIimg1+"'>"
-					+"	</span>"
-					+"	<div class='info'>"
-					+"    	<span class='title'>"+pIname+"</span>"
-	            	+"    	<span class='price'><strong>"+pIadult+"</strong>원~</span>"
-	            	+"	</div>"
-		        	+"</div>"
-		        	+"</a>"
-				)
-			}
-				
-			$('.multiple-items').slick({
-				infinite: true,
-				slidesToShow: 3,
-				slidesToScroll: 3,
-			});
-		}
-	});
-}
-
-
-$(function(){
-	city(defaultValue);
-	slideData(defaultValue);
-});
-
-</script>
- -->
 <style>
 img {width: 100%; height: 100%;}
 .content {width: 1130px; margin: 40px auto 30px auto;}
@@ -162,8 +79,8 @@ display: block; width: 20px; height: 20px; padding: 0;}
 .slick-prev:before, .slick-next:before {font-family: 'slick'; font-size: 47px; line-height: 1;
 opacity: .75; color: black;}
 
-.slimg{display: block; height: 212px; margin: 0 0 22px;}
-.sltag{display: block; z-index: 100; padding: 20px 20px 0; border-right: 1px solid #ccc;}
+.slimg{display: block; width:100%;height: 212px; margin: 0 0 22px;}
+.sltag{display: inline-block; z-index: 100; padding: 20px 20px 0; border-right: 1px solid #ccc;}
 
 .slider_content .info{height: 88px;}
 
@@ -172,12 +89,21 @@ overflow: hidden; white-space: normal;}
 </style>
 
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-
+<script>
+onload(){
+	
+var befActive = "JPN";
+var curentCity = window.location.search.substring(6);
+	$("#"+befActive).removeClass("active"); // 이전 클릭된 active값 제거
+	$("#"+curentCity).addClass("active");
+}
+</script>
 
 
 <div class="maincontainer">
 	<!-- 카테고리 -->
 	<div class="ctgr">
+	
 		<a href="package_main?ccid=JPN"><span id="JPN" class="active">일본</span></a>
 		<a href="package_main?ccid=THA"><span id="THA">태국</span></a>
 		<a href="package_main?ccid=PHL"><span id="PHL">필리핀</span></a>
@@ -233,6 +159,22 @@ overflow: hidden; white-space: normal;}
 	<div class="tourslide">
 	<h3>23년 인기여행지</h3>
 		<div class="multiple-items">
+		<%
+		for(int i = 0; i< piList2.size(); i++){
+			pi2 = piList2.get(i);
+		%>
+				<a class='sltag' href='package_list?picode=<%=pi2.getPi_code()%>'>
+					<div class='slider_content'>
+						<span class='slimg'>
+						<img src='/greenTour/front/img/<%= pi2.getPi_img1()%>'>
+						</span>
+						<div class='info'>
+					    	<span class='title'><%=pi2.getPi_name() %></span>
+	            	    	<span class='price'><strong><%=pi2.getPi_adult() %></strong>원~</span>
+	            		</div>
+		        	</div>
+		        </a>
+		<%}%>
 		</div>
 	</div>
 </div>

@@ -22,7 +22,7 @@ if (loginInfo != null) {
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>GreenTour</title>
 </head>
 <script src="/greenTourSite/js/jquery-3.6.1.js"></script>
 
@@ -102,21 +102,32 @@ h1 {font-size:45px; color:rgb(112,173,71);}
     margin:5px 5px;    
 }
 .my_menu{
-    border:1px solid lightgrey; line-height: 40px;
-    width:90px; height: 40px; border-radius: 10px;
-    display:inline-block; text-align: center; 
+    border:1px solid lightgrey; border-radius: 5px;
+	line-height: 40px;
+	width: 90px;
+	height: 40px;
+	border-radius: 10px;
+	display: inline-block;
+	text-align: center;
 }
 #menu {display: flex;
     justify-content: space-between;
 }
 #menu a {}
 #menu .main_menu {
-    border:1px solid lightgrey; line-height: 60px;
-    width:150px; height: 60px;
-    display:inline-block; text-align: center; 
-    font-size: 21px;
+    border: 1px solid lightgrey;
+	color : #555;
+	border-radius:10px;
+	line-height: 60px;
+	font-weight:bolder;
+	width: 150px;
+	height: 60px;
+	display: inline-block;
+	text-align: center;
+	font-size: 21px;
+	margin-top:20px;
 }
-
+.main_menu:hover {color : rgb(112, 173, 71);}
 #title > a {text-decoration:none;}
 </style>
 <body>
@@ -135,7 +146,7 @@ h1 {font-size:45px; color:rgb(112,173,71);}
                 <a href="#"><span class="my_menu">예약확인</span></a>
                 <% } else { %>
                 <a href="#"><span class="my_menu"><%=miid %>님</span></a>
-                <a href="/greenTourSite/logout.jsp"><span class="my_menu">로그아웃</span></a>
+                <a href="/greenTour/logout.jsp"><span class="my_menu">로그아웃</span></a>
                 <a href="mypage_reserve"><span class="my_menu">마이페이지</span></a>
                 <a href="#"><span class="my_menu">예약확인</span></a>
                 <% } %>

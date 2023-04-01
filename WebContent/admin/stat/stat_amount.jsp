@@ -62,14 +62,6 @@ if (sm <= 6){
 
 %>
 <style>
-.side_menu {
-	width : 200px;
-	position : fixed;
-	left : 12%; top : 25%;
-	border: 1px solid black;
-	text-align : center;
-	display : inline;
-}
 .side_menu ul, li {list-style : none; margin: 0; padding: 0;}
 
 .ctg {border : 1px solid black; margin: 5px; background-color : greenyellow;}
@@ -83,10 +75,10 @@ canvas {
 	-ms-user-select: none;
 }
 
-#body_container {text-align : center; margin : 80px auto; width: 980px;}
+#body_container {text-align : center; width: 830px;}
 #num_box {border : 1px solid grey; margin : 30px auto; display : flex; justify-content: space-around;}
 
-.statBox {display : flex; justify-content: space-around; text-align: left; margin : 10px auto; border : 1px solid black; width:980px; }
+.statBox {display : flex; justify-content: space-around; text-align: left; margin : 10px auto; border : 1px solid black; width:830px; }
 .statBox div {padding : 10px 20px;}
 .statBox ul {padding : 0;}
 .statBox li {list-style: none; padding : 0 5px;}
@@ -154,105 +146,87 @@ window.onload = function() {
 };
 </script>
 
-<div class="side_menu">
-  <div class="ctg">
-      <a href="#" class="menulink">회원 관리</a>
-      <ul class ="hide">
-  		<li><a href="">회원 목록</a></li>
-		<li><a href="">예약 관리</a></li>
-      </ul>
-  </div>
-  <div class="ctg">
-      <a href="#" class="menulink">상품 관리</a>
-      <ul class ="hide">
-		<li><a href="">패키지 관리</a></li>
-		<li><a href="">호텔 관리</a></li>
-		<li><a href="">관광 상품 관리</a></li>
-      </ul>
-  </div>
-  <div class="ctg">
-      <a href="#" class="menulink">고객 센터</a>
-      <ul class ="hide">
-		<li><a href="">공지사항</a></li>
-		<li><a href="">자주 찾는 질문</a></li>
-		<li><a href="">전체 문의</a></li>
-		<li><a href="">칭찬의 소리</a></li>
-      </ul>
-  </div>
-    <div class="ctg">
-      <a href="#" class="menulink">통계</a>
-      <ul class ="hide">
-		<li><a href="/greenTourSite/admin_amount">통계 홈</a></li>
-		<li><a href="/greenTourSite/admin_city">도시별 판매액</a></li>
-      </ul>
-  </div>
-</div>
 
-<div id = "body_container">
-	<h2>  <%=ci.getsYear()  %> 그린투어 </h2>
-	<div id="container">
-		<canvas id="canvas">
-		</canvas>
-	</div>
-	
-	<div id = "num_box">
-		<div>
-		<h3>이번 달 </h3>
-			<p> 패키지  판매액 :<%=si1.getSi_paAmount() %> 원</p>
-			<p> 나만의  판매액 :<%=si2.getSi_mpAmount()%>  원</p>
-			<p> 총 판매액  판매액 :<%=si1.getSi_paAmount() + si2.getSi_mpAmount() %> 원</p>
+<main class="side_menu">
+	<ul class="ctgr">
+		<li><a href="member_list">회원 관리</a></li><hr />
+		<li><a href="">도시 관리</a></li><hr />
+		<li><a href="">게시판 관리</a></li><hr />
+		<li><a href="/greenTourSite/admin_package_list">상품 관리</a></li><hr />
+		<li><a href="">고객센터</a></li><hr />
+		<li>
+			<a>통계</a><br/>
+			<span><strong>&nbsp;&nbsp;&nbsp;<a href="/greenTourSite/admin_amount"> - 통계 홈</a><br/></strong></span>
+			<span>&nbsp;&nbsp;&nbsp;<a href="/greenTourSite/admin_city"> - 도시별 판매액</a></span>
+		</li>
+	</ul>
+
+	<div id = "body_container">
+		<h2>  <%=ci.getsYear()  %> 그린투어 </h2>
+		<div id="container">
+			<canvas id="canvas">
+			</canvas>
 		</div>
-		<div>
-		<h3><%=ci.getsYear()  %> 판매 누적액 </h3>
-			<p> 패키지  판매액 :<%=sp1.getSi_paAmount() + sp2.getSi_paAmount() + sp3.getSi_paAmount() + sp4.getSi_paAmount() + sp5.getSi_paAmount() + sp6.getSi_paAmount()
-			+ sp7.getSi_paAmount() + sp8.getSi_paAmount() + sp9.getSi_paAmount() + sp10.getSi_paAmount() + sp11.getSi_paAmount() +  sp12.getSi_paAmount() %> 원</p>
-			<p> 나만의  판매액 :<%=sm1.getSi_mpAmount() + sm2.getSi_mpAmount() + sm3.getSi_mpAmount() + sm4.getSi_mpAmount() + sm5.getSi_mpAmount() + sm6.getSi_mpAmount() 
-			+ sm7.getSi_mpAmount() + sm8.getSi_mpAmount() + sm9.getSi_mpAmount() + sm10.getSi_mpAmount() + sm11.getSi_mpAmount() + sm12.getSi_mpAmount() %> 원</p>
-			<p> 총 판매액  판매액 :<%=sp1.getSi_paAmount() + sp2.getSi_paAmount() + sp3.getSi_paAmount() + sp4.getSi_paAmount() + sp5.getSi_paAmount() + sp6.getSi_paAmount()
-			+ sp7.getSi_paAmount() + sp8.getSi_paAmount() + sp9.getSi_paAmount() + sp10.getSi_paAmount() + sp11.getSi_paAmount() +  sp12.getSi_paAmount() +  
-			sm1.getSi_mpAmount() + sm2.getSi_mpAmount() + sm3.getSi_mpAmount() + sm4.getSi_mpAmount() + sm5.getSi_mpAmount() + sm6.getSi_mpAmount() 
-			+ sm7.getSi_mpAmount() + sm8.getSi_mpAmount() + sm9.getSi_mpAmount() + sm10.getSi_mpAmount() + sm11.getSi_mpAmount() + sm12.getSi_mpAmount()%> 원</p>
+		
+		<div id = "num_box">
+			<div>
+			<h3>이번 달 </h3>
+				<p> 패키지  판매액 :<%=si1.getSi_paAmount() %> 원</p>
+				<p> 나만의  판매액 :<%=si2.getSi_mpAmount()%>  원</p>
+				<p> 총 판매액  판매액 :<%=si1.getSi_paAmount() + si2.getSi_mpAmount() %> 원</p>
+			</div>
+			<div>
+			<h3><%=ci.getsYear()  %> 판매 누적액 </h3>
+				<p> 패키지  판매액 :<%=sp1.getSi_paAmount() + sp2.getSi_paAmount() + sp3.getSi_paAmount() + sp4.getSi_paAmount() + sp5.getSi_paAmount() + sp6.getSi_paAmount()
+				+ sp7.getSi_paAmount() + sp8.getSi_paAmount() + sp9.getSi_paAmount() + sp10.getSi_paAmount() + sp11.getSi_paAmount() +  sp12.getSi_paAmount() %> 원</p>
+				<p> 나만의  판매액 :<%=sm1.getSi_mpAmount() + sm2.getSi_mpAmount() + sm3.getSi_mpAmount() + sm4.getSi_mpAmount() + sm5.getSi_mpAmount() + sm6.getSi_mpAmount() 
+				+ sm7.getSi_mpAmount() + sm8.getSi_mpAmount() + sm9.getSi_mpAmount() + sm10.getSi_mpAmount() + sm11.getSi_mpAmount() + sm12.getSi_mpAmount() %> 원</p>
+				<p> 총 판매액  판매액 :<%=sp1.getSi_paAmount() + sp2.getSi_paAmount() + sp3.getSi_paAmount() + sp4.getSi_paAmount() + sp5.getSi_paAmount() + sp6.getSi_paAmount()
+				+ sp7.getSi_paAmount() + sp8.getSi_paAmount() + sp9.getSi_paAmount() + sp10.getSi_paAmount() + sp11.getSi_paAmount() +  sp12.getSi_paAmount() +  
+				sm1.getSi_mpAmount() + sm2.getSi_mpAmount() + sm3.getSi_mpAmount() + sm4.getSi_mpAmount() + sm5.getSi_mpAmount() + sm6.getSi_mpAmount() 
+				+ sm7.getSi_mpAmount() + sm8.getSi_mpAmount() + sm9.getSi_mpAmount() + sm10.getSi_mpAmount() + sm11.getSi_mpAmount() + sm12.getSi_mpAmount()%> 원</p>
+			</div>
 		</div>
-	</div>
-
-<div class = "statBox">
-	<div name = "rateStat" style = "width :30%" >
-		<h3>판매량 통계</h3>
-		<ul>
-			<li>패키지 판매량 :<%=pak.getSi_pNum() %> </li>
-			<li>나만의 패키지 판매량 :<%=mpk.getSi_mNum() %> </li>
-			<li>총 판매량 : <%=pak.getSi_pNum() +  mpk.getSi_mNum()%></li>
-		</ul>
-	</div>
-	<div name = "amountStat" style = "width :35%">
-		<h3>판매액 통계</h3>
-		<ul>
-			<li>패키지 판매액 :<%=pak.getSi_paAmount() %> 원</li>
-			<li>나만의 패키지 판매액 :<%=mpk.getSi_mpAmount() %> 원</li>
-			<li>총 판매액 :<%=pak.getSi_paAmount() + mpk.getSi_mpAmount() %> 원</li>
-		</ul>
-	</div>	
-	<div name = "memberStat" style = "width :15%">
-		<h3>회원 수</h3>
-		<ul>
-			<li>전체 : <%=member.getSi_member() %></li>
-			<li>정상 회원:<%=memberA.getSi_memberA() %> </li>
-			<li>휴면 회원:<%=memberB.getSi_memberB() %> </li>
-			<li>탈퇴 회원:<%=memberD.getSi_memberD() %> </li>
-		</ul>
-	</div>	
-	<div name = "rqStat" style = "width :20%">
-		<h3>문의 글</h3>
-		<ul>
-			<li>전체 :<%=rq.getSi_TotalReq() %> </li>
-			<li><a href="">답변 미완료:<%=rqNo.getSi_NoReq() %> </a></li>
-			<li>답변 완료:<%=rqYes.getSi_YesReq() %> </li>
-		</ul>
-	</div>		
 	
-</div>
+	<div class = "statBox">
+		<div name = "rateStat" style = "width :30%" >
+			<h3>판매량 통계</h3>
+			<ul>
+				<li>패키지 판매량 :<%=pak.getSi_pNum() %> </li>
+				<li>나만의 패키지 판매량 :<%=mpk.getSi_mNum() %> </li>
+				<li>총 판매량 : <%=pak.getSi_pNum() +  mpk.getSi_mNum()%></li>
+			</ul>
+		</div>
+		<div name = "amountStat" style = "width :35%">
+			<h3>판매액 통계</h3>
+			<ul>
+				<li>패키지 판매액 :<%=pak.getSi_paAmount() %> 원</li>
+				<li>나만의 패키지 판매액 :<%=mpk.getSi_mpAmount() %> 원</li>
+				<li>총 판매액 :<%=pak.getSi_paAmount() + mpk.getSi_mpAmount() %> 원</li>
+			</ul>
+		</div>	
+		<div name = "memberStat" style = "width :15%">
+			<h3>회원 수</h3>
+			<ul>
+				<li>전체 : <%=member.getSi_member() %></li>
+				<li>정상 회원:<%=memberA.getSi_memberA() %> </li>
+				<li>휴면 회원:<%=memberB.getSi_memberB() %> </li>
+				<li>탈퇴 회원:<%=memberD.getSi_memberD() %> </li>
+			</ul>
+		</div>	
+		<div name = "rqStat" style = "width :20%">
+			<h3>문의 글</h3>
+			<ul>
+				<li>전체 :<%=rq.getSi_TotalReq() %> </li>
+				<li><a href="">답변 미완료:<%=rqNo.getSi_NoReq() %> </a></li>
+				<li>답변 완료:<%=rqYes.getSi_YesReq() %> </li>
+			</ul>
+		</div>		
+		
+	</div>
 
 </div>
+
 
 </body>
 </html>

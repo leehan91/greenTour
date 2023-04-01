@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../../_inc/inc_head.jsp" %>
 <%
-	request.setCharacterEncoding("utf-8");
+request.setCharacterEncoding("utf-8");
 ArrayList<CsPareview> csPareview = (ArrayList<CsPareview>)request.getAttribute("csPareview");
 
 
@@ -71,31 +71,32 @@ if(csPareview.size() > 0){ // 게시글 목록이 있으면
 		String title = cp.getCp_title();
 		if (title.length() > 30)
 			title = title.substring(0,27) + "...";
-		title = "<a href='pareview_list?cpidx=" + cp.getCp_idx() + args + "'>" + title +"</a>";
+		title = "<a href='pareview_view?cpidx=" + cp.getCp_idx() + args + "'>" + title +"</a>";
 %>
 <tr align="center">
-	<td><%=num %></td>
+	<td><%=num + 1 %></td>
 	<td><%=cp.getCc_name() %></td>
-	<td><%=cp.getOp_name() %></td>
+	<td><%=cp.getOp_name() %><br/>
+	<%=cp.getOp_code() %></td>
 	<td align="left">&nbsp;&nbsp;<%=title %></td>
 	<td>
 		<div class="mb-3" name="myform" id="myform" >
 		 <fieldset>
-			<input type="radio" name="reviewStar" value="5" id="rate1"><label
+			<input type="radio" name="reviewStar" value="1" id="rate1"><label
 				for="rate1">★</label>
-			<input type="radio" name="reviewStar" value="4" id="rate2"><label
+			<input type="radio" name="reviewStar" value="2" id="rate2"><label
 				for="rate2">★</label>
 			<input type="radio" name="reviewStar" value="3" id="rate3"><label
 				for="rate3">★</label>
-			<input type="radio" name="reviewStar" value="2" id="rate4"><label
+			<input type="radio" name="reviewStar" value="4" id="rate4"><label
 				for="rate4">★</label>
-			<input type="radio" name="reviewStar" value="1" id="rate5"><label
+			<input type="radio" name="reviewStar" value="5" id="rate5"><label
 				for="rate5">★</label>
 		</fieldset>
 		(<%=cp.getCp_score() %>)
 		</div>
 	</td>
-	<td><%=loginInfo.getMi_name() %></td>
+	<td><%=cp.getMi_name() %></td>
 	<td><%=cp.getCp_date() %></td>
 	<td><%=cp.getCp_read() %></td>
 </tr>
@@ -152,15 +153,15 @@ if (rcnt > 0 ){ // 게시글이 있으면 - 페이징 영역을 보여줌
 </tr>
 <tr><td colspan ="2">
 	<form name="frmSch" method="get" align="center" >
-		<select name="schtype">
-			<option value="">검색조건</option>
-			<option value="city" <% if (schtype.equals("city")) {%>selected="selected"<%} %>>도시명</option>
-			<option value="package" <% if (schtype.equals("package")) {%>selected="selected"<%} %>>패키지명</option>
-			<option value="writer" <% if (schtype.equals("writer")) {%>selected="selected"<%} %>>작성자</option>
-		</select>
+		 <select name="schtype">
+	         <option value="">검색조건</option>
+	         <option value="name" <% if (schtype.equals("name")) {%>selected="selected"<%} %>>도시명</option>
+	         <option value="title" <% if (schtype.equals("title")) {%>selected="selected"<%} %>>패키지명</option>
+	         <option value="writer" <% if (schtype.equals("writer")) {%>selected="selected"<%} %>>작성자</option>
+      	</select>
 		<input id="keyword" type="text" name="keyword" value="<%=keyword %>"/>
 		<input type="submit" value="검색"/>
-		<input type="button" value="전체글" onclick="location.href='pareview;"/>
+		<input type="button" value="전체글" onclick="location.href='pareview_list;"/>
 	</form>
 </td></tr>
 </table>

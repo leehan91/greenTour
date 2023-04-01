@@ -122,6 +122,12 @@ $(document).ready(function(){
       </ul>
   </div>
   <div class="ctg">
+      <a href="#" class="menulink">도시관리</a>
+      <ul class ="hide">
+		<li><a href="#">도시 관리</a></li>
+      </ul>
+  </div>
+  <div class="ctg">
       <a href="/greenTourSite/admin_package_list" class="menulink">상품 관리</a>
       <ul class ="hide">
 		<li><a href="/greenTourSite/admin_package_list">패키지 관리</a></li>

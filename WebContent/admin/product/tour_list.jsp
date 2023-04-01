@@ -25,13 +25,24 @@ args = "&cpage=" + cpage + schargs;
 <title>Insert title here</title>
 <style>
 ul, li, a{list-style: none; padding:0; color:#000; text-decoration:none;}
-body{width:1130px; margin:0 auto;}
-#main {display:flex; justify-content: space-evenly;; margin-top:100px;}
-#list{border:1px solid #000;}
-#list tr, #list th, #list td{border:1px solid #ddd;}
-#sch td{margin:15px;}
+
+.list{border:1px solid #000; height:690px;}
+.list th {border:1px solid #ddd;}
+.list tr td, #list tr th {
+    position: relative;
+    padding: 10px 10px 12px 10px;
+    font-size: 13px;
+    border: 1px solid #ccc;
+    word-wrap: break-word;
+    word-break: break-all;
+    letter-spacing: -0.04em;
+}
+.list tbody tr td  a{
+     padding-left: 5px;
+}
+#sch td{margin: 0 auto;}
 #edit {	width:20px; }
-.ctgr {width:200px;}
+
 </style>
 <script>
 
@@ -74,36 +85,34 @@ function listDel(ptcode){
 	}
 }
 
-
-
 </script>
 </head>
 <body>
-<main id="main">
+<main class="side_menu">
 	<ul class="ctgr">
 		<li><a href="member_list">회원 관리</a></li><hr />
 		<li><a href="">도시 관리</a></li><hr />
 		<li><a href="">게시판 관리</a></li><hr />
-		<li>
+		<li class = "fold">
          <a href="/greenTourSite/admin_package_list">상품 관리</a><br />
          <span>&nbsp;&nbsp;&nbsp;<a href="/greenTourSite/admin_package_list"> - 패키지 관리</a></span><br />
 	         <span>&nbsp;&nbsp;&nbsp;<a href="/greenTourSite/hotel_list"> - 호텔 관리</a></span><br />
-	         <span>&nbsp;&nbsp;&nbsp;<a href="/greenTourSite/tour_list"> - 관광 상품 관리</a><br />
+	         <span>&nbsp;&nbsp;&nbsp;<strong><a href="/greenTourSite/tour_list"> - 관광 상품 관리</a></strong><br />
       </li><hr />
 		<li><a href="">고객센터</a></li><hr />
-		<li><a href="/greenTourSite/admin_amount">통계</a></li>
+		<li class = "fold"><a href="/greenTourSite/admin_amount">통계</a></li>
 	</ul>
 <form name="frm" />
-<table width="830" id="list">
+<table width="830" class="list">
 <tr>
-<th width="5%">NO</th>
-<th width="5%">국가</th>
-<th width="5%">도시</th>
-<th width="20%">관광 상품명</th>
+<th width="6%">NO</th>
+<th width="7%">국가</th>
+<th width="7%">도시</th>
+<th width="16%">관광 상품명</th>
 <th width="*">주소</th>
+<th width="17%">등록일</th>
 <th width="5%">수정</th>
 <th width="5%">선택</th>
-<th width="15%">등록일</th>
 </tr>
 <%
 if(ptList.size() > 0){ // 게시글 목록이 있으면
@@ -130,10 +139,10 @@ if(ptList.size() > 0){ // 게시글 목록이 있으면
 	<td><%=city %></td>
 	<td align="left">&nbsp;&nbsp;<%=name %></td>
 	<td align="left"><%=addr %></td>
+	<td><%=pt.getPt_date() %></td>
 	<td><a href="tour_form_up?ptcode=<%=ptcode %>">
 	<img id="edit" src="/greenTourSite/front/img/edit.png"></a></td>
 	<td><input type="checkbox" name="del" class="del" value="<%=ptcode %>" /></td>
-	<td><%=pt.getPt_date() %></td>
 </tr>
 <%
 		num--;
@@ -187,7 +196,7 @@ if (rcnt > 0 ){ // 게시글이 있으면 - 페이징 영역을 보여줌
 	<input type="button" align="right"value="상품 삭제" onclick="delP();" />
 </td>
 </tr>
-<tr><td colspan ="2" align="center">
+<tr><td colspan ="2" align="center" cellpadding="13">
 	<form name="frmSch" method="get" >
 		<select name="schtype">
 			<option value="">검색조건</option>
