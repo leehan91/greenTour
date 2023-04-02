@@ -101,7 +101,7 @@ function showList(num){
 		<p><a href="">게시판 관리</a></p><hr />
 		<p><a href="admin_package_list">상품 관리</a></p><hr />
 		<p><a href="">고객센터</a></p><hr />
-		<p><a href="/greenTourSite/admin_amount">통계</a></p>
+		<p><a href="/greenTour/admin_amount">통계</a></p>
 	</div>
 	<div id ="memberView-container">
 		<form name = "memFrm" action = "member_correc" post ="get">

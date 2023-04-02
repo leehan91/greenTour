@@ -3,7 +3,7 @@
 <%
 request.setCharacterEncoding("utf-8");
 
-ArrayList<MemberInfo> memberList = (ArrayList<MemberInfo>)request.getAttribute("memberList");
+ArrayList<CsPareview> cpList = (ArrayList<CsPareview>)request.getAttribute("cpList");
 PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
 int bsize = pageInfo.getBsize(), cpage = pageInfo.getCpage(), psize = pageInfo.getPsize();
 int rcnt = pageInfo.getRcnt(), pcnt = pageInfo.getPcnt(), spage = pageInfo.getSpage();
@@ -39,35 +39,26 @@ args = "&cpage=" + cpage + schargs;
 		
 		<table>
 			<tr>
-				<th width="5%">순번</th>
-				<th width="15%">ID</th>
-				<th width="15%">이름</th>
-				<th width="20%">e-mail</th>
-				<th width="20%">최종방문일</th>
-				<th width="20%">가입일</th>
-				<th width="5%">회원상태</th>
+				<th width="5%">번호</th>
+				<th width="15%">제목</th>
+				<th width="15%">작성자</th>
+				<th width="20%">작성일</th>
+				<th width="20%">삭제여부</th>
+				
 			</tr>
 			<%
-if (memberList.size() > 0) {		// 게시글 목록이 있으면
+if (cpList.size() > 0) {		// 게시글 목록이 있으면
 	int num = rcnt - (psize * (cpage - 1));
-	for (int i = 0; i < memberList.size(); i++) {
-		MemberInfo mi = memberList.get(i);
-		String title = mi.getMi_name();
-		if (title.length() > 8)		title = title.substring(0, 5) + "...";
-		title = "<a href='member_view?miid=" + mi.getMi_id() + args + "'>" + title + "</a>";	
-		String miState = mi.getMi_status();
-		if(miState.equals("a")) miState = "정상";
-		else if(miState.equals("b")) miState = "휴면";
-		else if(miState.equals("c")) miState = "삭제";
+	for (int i = 0; i < cpList.size(); i++) {
+		CsPareview cp = cpList.get(i);
+		
 %>
 	<tr align="center">
 		<td width="5%"><%=num %></td>
-		<td width="15%"><%=mi.getMi_id() %></td>
-		<td width="15%" align="center">&nbsp;&nbsp;<%=title %></td>
-		<td width="15%"><%=mi.getMi_email() %></td>
-		<td width="20%"><%=mi.getMi_lastlogin() %></td>
-		<td width="20%"><%=mi.getMi_joindate() %></td>
-		<td width="10%"><%=miState %></td>
+		<td width="15%"><%=cp.getCp_title() %></td>
+		<td width="15%" align="center">&nbsp;&nbsp;<%=cp.getMi_id() %></td>
+		<td width="15%"><%=cp.getCp_date() %></td>
+		<td width="20%"><%=cp.getCp_isdel() %></td>
 	</tr>
 <%
 		num--;
@@ -114,19 +105,18 @@ if (rcnt > 0) {		// 게시글이 있으면 - 페이징 영역을 보여줌
 	</tr>
 	<tr>
 		<td colspan="2">
-			<form name="frmSch" method="get">
+			<%-- <form name="frmSch" method="get">
 				<fieldset>
 					<legend>회원 검색</legend>
 					<select name="schtype">
 						<option value="">검색 조건</option>
 						<option value="name" <% if (schtype.equals("name")) { %>selected="selected"<% } %>>이름</option>
-						<option value="id" <% if (schtype.equals("id")) { %>selected="selected"<% } %>>ID</option>
-						<option value="status" <% if (schtype.equals("status")) { %>selected="selected"<% } %>>회원 상태</option>
+						<option value="title" <% if (schtype.equals("title")) { %>selected="selected"<% } %>>제목</option>
 					</select>
 					<input type="text" name="keyword" value="<%=keyword %>" />
 					<input type="submit" value="검색" />
 				</fieldset>
-			</form>
+			</form> --%>
 		</td>
 	</tr>	
 		</table>

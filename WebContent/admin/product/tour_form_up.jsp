@@ -25,7 +25,7 @@ textarea{margin-top:10px; }
 #title tr, #title td {padding:5px; border:1px solid #ddd;}
 #submit {padding:10px 20px; position:absolute; right:0; top:100%;}
 </style>
-<script src="/greenTourSite/js/jquery-3.6.1.js"></script>
+<script src="/greenTour/js/jquery-3.6.1.js"></script>
 <script>
 function frmVal(frm){
 	if(frm.code.value == "" ){
@@ -96,7 +96,7 @@ fileInput.addEventListener("change", handleFiles);
 	         <strong>&nbsp;&nbsp;&nbsp;<a href="tour_list"> - 관광 상품 관리</a></strong><br />
 		</li><hr />
 		<li><a href="">고객센터</a></li><hr />
-		<li><a href="/greenTourSite/admin_amount">통계</a></li>
+		<li><a href="/greenTour/admin_amount">통계</a></li>
 	</ul>
 <form id="frm" action="tour_proc_up" method="post" onsubmit="return frmVal(this);" enctype="multipart/form-data">
 	패키지 코드 : PT + 국가코드 + 도시코드 + 일련번호
@@ -122,7 +122,7 @@ fileInput.addEventListener("change", handleFiles);
 	</tr>
 	</table>
 	<div style ="width:500; height:400; object-fit:cover; overflow: hidden;" >
-    <img style ="object-fit:cover; "id="previewImg" width="100%;" height="100%" alt="이미지 영역" src="/greenTourSite/front/img/<%=pt.getPt_image() %>" />
+    <img style ="object-fit:cover; "id="previewImg" width="100%;" height="100%" alt="이미지 영역" src="/greenTour/front/img/<%=pt.getPt_image() %>" />
 	</div>
 	<input type="file" id="fileUpload" name="ptimg" accept='image/*' value="" ><br />
 

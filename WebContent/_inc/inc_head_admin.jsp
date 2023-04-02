@@ -14,12 +14,13 @@ if (adminLoginInfo != null) {
 // 로그인 여부를 판단할 변수 isLogin 생성
 %>
 <style>
-body{ max-width: 1130px; margin: 0 auto; }
-a{color:black; text-decoration: none;}
-li{list-style: none;}
-header{width: 1130px; 
-    margin: 0 auto;
-}
+body{ max-width: 1130px; margin: 0 auto;}
+ul, li, a {list-style: none; padding: 0; color: #000; text-decoration: none;}
+header{width: 1130px; margin: 0 auto;}
+.side_menu {display:flex; justify-content: space-evenly; margin-top:100px;}
+.ctgr {width:200px;}
+.ctgr > li {margin:16px 0;}
+.ctgr > li > span{margin:7px 0 0 0;display:inline-block;}
 </style>
 <!DOCTYPE html>
 <html>
@@ -53,9 +54,9 @@ header{width: 1130px;
 	<header>
 		<div class="m_menu">
 				<%if(!isLogin){ %>
-                <p><a href="/greenTourSite/admin/admin_index.jsp"><span class="my_menu">로그인</span></a></p>
+                <p><a href="/greenTour/admin/admin_index.jsp"><span class="my_menu">로그인</span></a></p>
                 <%} else { %>
-                <p><a href="/greenTourSite/admin/admin_logout.jsp"><span class="my_menu">로그아웃</span></a></p>
+                <p><a href="/greenTour/admin/admin_logout.jsp"><span class="my_menu">로그아웃</span></a></p>
                 <%} %>
 		</div>
 	</header>

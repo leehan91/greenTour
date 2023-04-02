@@ -22,7 +22,7 @@ textarea{margin-top:10px; }
 #title tr, #title td {padding:5px; border:1px solid #ddd;}
 #submit {padding:10px 20px; position:absolute; right:0; top:100%;}
 </style>
-<script src="/greenTourSite/js/jquery-3.6.1.js"></script>
+<script src="/greenTour/js/jquery-3.6.1.js"></script>
 <script>
 function frmVal(frm){
 	if(frm.code.value == "" ){

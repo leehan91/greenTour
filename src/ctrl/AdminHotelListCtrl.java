@@ -21,23 +21,17 @@ public class AdminHotelListCtrl extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		int cpage = 1, psize = 10, bsize = 10, rcnt = 0, pcnt = 0, spage = 0;
-		// ÇöÀç ÆäÀÌÁö ¹øÈ£, ÆäÀÌÁö Å©±â, ºí·Ï Å©±â, ·¹ÄÚµå(°Ô½Ã±Û) °³¼ö, ÆäÀÌÁö °³¼ö, ½ÃÀÛ ÆäÀÌÁö µîÀ» ÀúÀåÇÒ º¯¼öµé
-		
+	
 		if (request.getParameter("cpage") != null)		cpage = Integer.parseInt(request.getParameter("cpage")); 
-		// cpage °ªÀÌ ÀÖÀ¸¸é ¹Þ¾Æ¼­ int ÇüÀ¸·Î Çüº¯È¯ ½ÃÅ´ (º¸¾È»óÀÇ ÀÌÀ¯¿Í »ê¼ú ¿¬»êÀ» ÇØ¾ß ÇÏ±â ¶§¹®)
 		
-		String schtype = request.getParameter("schtype");		// °Ë»ö Á¶°Ç(Á¦¸ñ, ³»¿ë, Á¦¸ñ + ³»¿ë)
-		String keyword = request.getParameter("keyword");		// °Ë»ö¾î
-		String where = " where hi_isdel = 'n' ";		// °Ë»ö Á¶°ÇÀÌ ÀÖÀ» °æ¿ì where ÀýÀ» ÀúÀåÇÒ º¯¼ö
+		String schtype = request.getParameter("schtype");		// ï¿½Ë»ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ + ï¿½ï¿½ï¿½ï¿½)
+		String keyword = request.getParameter("keyword");		// ï¿½Ë»ï¿½ï¿½ï¿½
+		String where = " where hi_isdel = 'n' ";		// ï¿½Ë»ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ where ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		
 		if (schtype == null || keyword == null) {
 			schtype = "";		keyword = "";
-			// È­¸é»ó¿¡ °Ë»ö¾î°¡ 'null'·Î º¸ÀÌÁö ¾Ê°Ô ÇÏ±â À§ÇØ ºó ¹®ÀÚ¿­·Î Ã¤¿ò
-			// (°Ë»öÁ¶°Ç ÀÖÀ»°æ¿ì ÄÞº¸¹Ú½º selected ÇÏ±â À§ÇØ equals()·Î °Ë»çÇÒ ¶§ nullPointerException ¹ß»ýÀ» ¹æÁöÇÏ±â À§ÇØ) // 
-		} else if (!schtype.equals("") && !keyword.equals("")) {		// ´Ü¼øÈ÷ null¸¸ ¾Æ´Ñ°Ô ¾Æ´Ï¶ó ºó ¹®ÀÚ¿­µµ °Å¸£±â À§ÇÑ Àç Á¶°Ç¹® //
-		// °Ë»ö Á¶°Ç°ú °Ë»ö¾î°¡ ¸ðµÎ ÀÖÀ» °æ¿ì
+		} else if (!schtype.equals("") && !keyword.equals("")) {		// ï¿½Ü¼ï¿½ï¿½ï¿½ nullï¿½ï¿½ ï¿½Æ´Ñ°ï¿½ ï¿½Æ´Ï¶ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ç¹ï¿½ //
 			URLEncoder.encode(keyword, "UTF-8");
-			// Äõ¸® ½ºÆ®¸µÀ¸·Î ÁÖ°í ¹Þ´Â °Ë»ö¾î°¡ ÇÑ±Û ÀÏ °æ¿ì ºê¶ó¿ìÀú¿¡ µû¶ó ¹®Á¦°¡ ¹ß»ýÇÒ ¼ö ÀÖÀ¸¹Ç·Î À¯´ÏÄÚµå·Î º¯È¯
 			
 			if("nation".equals(schtype) || "city".equals(schtype)){
 				where += " AND UPPER(cc_id) LIKE UPPER('%" + keyword + "%')";;
@@ -47,10 +41,9 @@ public class AdminHotelListCtrl extends HttpServlet {
 		}
 		
 		AdminHotelListSvc adminHotelListSvc = new AdminHotelListSvc();
-		rcnt = adminHotelListSvc.getHotelListCount(where);		// °Ë»öµÈ °Ô½Ã±ÛÀÇ ÃÑ °³¼ö·Î °Ô½Ã±Û ÀÏ·Ã¹øÈ£ Ãâ·Â°ú ÀüÃ¼ ÆäÀÌÁö ¼ö °è»êÀ» À§ÇØ ÇÊ¿ä
+		rcnt = adminHotelListSvc.getHotelListCount(where);		// ï¿½Ë»ï¿½ï¿½ï¿½ ï¿½Ô½Ã±ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½Ã±ï¿½ ï¿½Ï·Ã¹ï¿½È£ ï¿½ï¿½Â°ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½
 		
 		ArrayList<HotelInfo> hotelList = adminHotelListSvc.getHotelList(where, cpage, psize);
-		// ¸ñ·Ï È­¸é¿¡¼­ º¸¿©ÁÙ °Ô½Ã±Û ¸ñ·ÏÀ» ArrayList<BbsFree> ÇüÀ¸·Î ¹Þ¾Æ¿È, ÇÊ¿äÇÑ ¸¸Å­¸¸ ¹Þ¾Æ¿À±â À§ÇØ cpage ¿Í psize°¡ ÇÊ¿ä
 		
 		PageInfo pageInfo = new PageInfo();
 		pageInfo.setCpage(cpage);
@@ -61,7 +54,7 @@ public class AdminHotelListCtrl extends HttpServlet {
 		pageInfo.setSpage(spage);
 		pageInfo.setSchtype(schtype);
 		pageInfo.setKeyword(keyword);
-		// ÆäÀÌÂ¡°ú °Ë»ö¿¡ ÇÊ¿äÇÑ Á¤º¸µéÀ» PageInfoÇü ÀÎ½ºÅÏ½º¿¡ ÀúÀå
+		// ï¿½ï¿½ï¿½ï¿½Â¡ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ PageInfoï¿½ï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		
 		request.setAttribute("hotelList", hotelList);
 		request.setAttribute("pageInfo", pageInfo);

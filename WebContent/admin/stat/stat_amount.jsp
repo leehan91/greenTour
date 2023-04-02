@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../../_inc/inc_head_admin.jsp" %>
-<script src="/greenTourSite/js/utils.js"></script>
-<script src="/greenTourSite/js/Chart.min.js"></script>
+<script src="/greenTour/js/utils.js"></script>
+<script src="/greenTour/js/Chart.min.js"></script>
 <%
 request.setCharacterEncoding("utf-8");
 
@@ -152,12 +152,12 @@ window.onload = function() {
 		<li><a href="member_list">회원 관리</a></li><hr />
 		<li><a href="">도시 관리</a></li><hr />
 		<li><a href="">게시판 관리</a></li><hr />
-		<li><a href="/greenTourSite/admin_package_list">상품 관리</a></li><hr />
+		<li><a href="/greenTour/admin_package_list">상품 관리</a></li><hr />
 		<li><a href="">고객센터</a></li><hr />
 		<li>
 			<a>통계</a><br/>
-			<span><strong>&nbsp;&nbsp;&nbsp;<a href="/greenTourSite/admin_amount"> - 통계 홈</a><br/></strong></span>
-			<span>&nbsp;&nbsp;&nbsp;<a href="/greenTourSite/admin_city"> - 도시별 판매액</a></span>
+			<span><strong>&nbsp;&nbsp;&nbsp;<a href="/greenTour/admin_amount"> - 통계 홈</a><br/></strong></span>
+			<span>&nbsp;&nbsp;&nbsp;<a href="/greenTour/admin_city"> - 도시별 판매액</a></span>
 		</li>
 	</ul>
 

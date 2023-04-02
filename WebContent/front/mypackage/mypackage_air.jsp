@@ -195,7 +195,7 @@ function gohotel(){
 				
 				%>
 				<div style="display: flex; padding:10px;">
-				<div class="air_img"><img width="100" src="/greenTourSite/front/mypackage/image/korean.jpg"></div>
+				<div class="air_img"><img width="100" src="/greenTour/front/mypackage/image/korean.jpg"></div>
 				인천 > <%= fi.getCc_name()%> &nbsp; 출발 : <%=fi.getFi_departure() %> &nbsp; 도착 : <%=fi.getFi_cityarrive() %><br /><br />
 				<%= fi.getCc_name()%> > 인천 &nbsp; 출발 : <%=fi.getFi_cityleave() %> &nbsp; 도착 : <%=fi.getFi_entry() %>
 			
@@ -214,7 +214,7 @@ function gohotel(){
 			</div>
 			
 			<div style="display: flex;" padding:10px;>
-			<div><img width="105" src="/greenTourSite/front/mypackage/image/asiana.jpg"></div>
+			<div><img width="105" src="/greenTour/front/mypackage/image/asiana.jpg"></div>
 			인천 > <%= fi.getCc_name()%> &nbsp; 출발 : <%=fi.getFi_departure() %> &nbsp; 도착 : <%=fi.getFi_cityarrive() %><br /><br />
 			<%= fi.getCc_name()%> > 인천 &nbsp; 출발 : <%=fi.getFi_cityleave() %> &nbsp; 도착 : <%=fi.getFi_entry() %>
 			

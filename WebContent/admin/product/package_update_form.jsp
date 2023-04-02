@@ -334,7 +334,7 @@ function makePnidx(){
 	if(confirm('유의사항을 생성하시겠습니까?')){
 		$.ajax({
 			type : "POST",
-			url : "/greenTourSite/admin_add_package_notice",
+			url : "/greenTour/admin_add_package_notice",
 			data : {"pninsur" : pninsur, "pnguide" : pnguide, 
 					"pninclude" : pninclude, "pndeclude" : pndeclude, 
 					"pnwarning" : pnwarning, "pnsafe" : pnsafe,

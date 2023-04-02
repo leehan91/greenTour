@@ -92,7 +92,7 @@ String hicode = hi.getHi_code();
 <div>
 	<div class="content">
 		<span class="hcode">호텔코드 : <%=hicode %></span>
-		<form method="post" id="hotelAddForm" action="/greenTourSite/hotel_up">
+		<form method="post" id="hotelAddForm" action="/greenTour/hotel_up">
 			<table class="tg" style="table-layout: fixed; width: 1130px">
 				<colgroup>
 					<col style="width: 77px">

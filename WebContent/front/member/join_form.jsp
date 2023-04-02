@@ -39,7 +39,7 @@ input[type=submit] {width:200px; height:30px; align:center;}
 		if (uid.length >= 4) {		// 사용자가 입력한 아이디가 4자 이상이면
 			$.ajax({	// 데이터 주고 받을 때 사용 //
 				type : "POST", 		// 데이터 전송 방법
-				url : "/greenTourSite/dupId", 	// 전송한 데이터를 받을 서버의 url(컨트롤러로 서블릿 클래스를 의미)
+				url : "/greenTour/dupId", 	// 전송한 데이터를 받을 서버의 url(컨트롤러로 서블릿 클래스를 의미)
 				data : {"uid" : uid}, 		// 지정한 url로 보낼 데이터의 이름과 값
 				success : function(chkRs) {		// 데이터를 보내 실행한 결과를 chkRs로 받아 옴
 					if (chkRs == 0) {		// uid와 동일한 기존 회원의 아이디가 없으면

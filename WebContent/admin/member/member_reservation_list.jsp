@@ -12,9 +12,9 @@
 		</li><hr />
 		<li><a href="">도시 관리</a></li><hr />
 		<li><a href="">게시판 관리</a></li><hr />
-		<li><a href="/greenTourSite/admin_package_list">상품 관리</a></li><hr />
+		<li><a href="/greenTour/admin_package_list">상품 관리</a></li><hr />
 		<li><a href="">고객센터</a></li><hr />
-		<li class = "fold"><a href="/greenTourSite/admin_amount">통계</a></li>
+		<li class = "fold"><a href="/greenTour/admin_amount">통계</a></li>
 	</ul>
 <div class="">
 

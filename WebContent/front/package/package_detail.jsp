@@ -560,19 +560,19 @@ width: 25%;
 		<div class="layout">
 			<ul class="package_slider">
 				<li>	
-					<img src="/greenTourSite/front/img/<%=pi.getPi_img1() %>">
+					<img src="/greenTour/front/img/<%=pi.getPi_img1() %>">
 				</li>
 				<li>	
-					<img src="/greenTourSite/front/img/<%=pi.getPi_img2() %>">
+					<img src="/greenTour/front/img/<%=pi.getPi_img2() %>">
 				</li>
 				<li>	
-					<img src="/greenTourSite/front/img/<%=pi.getPi_img3() %>">
+					<img src="/greenTour/front/img/<%=pi.getPi_img3() %>">
 				</li>
 				<li>	
-					<img src="/greenTourSite/front/img/<%=pi.getPi_img4() %>">
+					<img src="/greenTour/front/img/<%=pi.getPi_img4() %>">
 				</li>
 				<li>	
-					<img src="/greenTourSite/front/img/<%=pi.getPi_img5() %>">
+					<img src="/greenTour/front/img/<%=pi.getPi_img5() %>">
 				</li>
 			</ul>
 		</div>

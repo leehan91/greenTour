@@ -11,7 +11,7 @@ import vo.*;
 @WebServlet("/admin_add_package_insert")
 @MultipartConfig(
 		fileSizeThreshold = 0,
-		location = "E:/bhj/web/work/greenTourSite/WebContent/front/img"		
+		location = "E:/bhj/web/work/greenTour/WebContent/front/img"		
 )
 public class AdminAddPackageInsertCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -28,21 +28,21 @@ public class AdminAddPackageInsertCtrl extends HttpServlet {
 			response.setContentType("text/html; charset=utf-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('·Î±×ÀÎ ÈÄ »ç¿ëÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.');");
+			out.println("alert('ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ ï¿½Ö½ï¿½ï¿½Ï´ï¿½.');");
 			out.println("location.replace('admin/admin_index.jsp?url=admin_add_package_form')");
 			out.println("</script>");
 			out.close();
 		}
 		
-		// ÀÌ¹ÌÁö Ã³¸® 
+		// ï¿½Ì¹ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ 
 		
-		String uploadFileNameList = ""; // ¾÷·ÎµåÇÒ ÆÄÀÏ ÀÌ¸§µéÀ» ÀúÀåÇÒ º¯¼ö
+		String uploadFileNameList = ""; // ï¿½ï¿½ï¿½Îµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		
 		for (Part part : request.getParts()) {
 			
 			if(part.getName().equals("piimg1") || part.getName().equals("piimg2") || part.getName().equals("piimg3")
 					|| part.getName().equals("piimg4") || part.getName().equals("piimg5")) {
-				//ÇØ´ç ÀÌ¹ÌÁöµé ÀÏ¶§¸¸ part·Î ÀÛ¾÷, value·Î ¾ò´Â°ªÀÌ ¾Æ´Ï¶ó ÄÁÆ®·Ñ ÀÚÃ¼ÀÇ ÀÌ¸§À» "" ¾È¿¡ Àû¾î¾ß ÇÔ. 
+				//ï¿½Ø´ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¶ï¿½ï¿½ï¿½ partï¿½ï¿½ ï¿½Û¾ï¿½, valueï¿½ï¿½ ï¿½ï¿½Â°ï¿½ï¿½ï¿½ ï¿½Æ´Ï¶ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ "" ï¿½È¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½. 
 				String cd = part.getHeader("content-disposition");
 			
 				String uploadFileName = getUploadFileName(cd);
@@ -55,7 +55,7 @@ public class AdminAddPackageInsertCtrl extends HttpServlet {
 		if(!uploadFileNameList.equals(""))
 			uploadFileNameList = uploadFileNameList.substring(2);
 		
-		String[] arr = uploadFileNameList.split(", ");	//uploadFileNameList : piimg1,piimg2, ... ,piimg5 ·Î ´ã°ÜÀÖÀ½ 
+		String[] arr = uploadFileNameList.split(", ");	//uploadFileNameList : piimg1,piimg2, ... ,piimg5 ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 		String piimg1 = arr[0];
 		String piimg2 = arr[1];
 		String piimg3 = arr[2];
@@ -65,18 +65,18 @@ public class AdminAddPackageInsertCtrl extends HttpServlet {
 
 		
 		int date = 0;
-		// picountry Ã³¸®
+		// picountry Ã³ï¿½ï¿½
 		String nation = "";
 		int nationNum = Integer.parseInt(request.getParameter("nation"));
-		if(nationNum==1) nation = "ÀÏº»";
-		else if(nationNum==2) nation="ÅÂ±¹";
-		else if(nationNum==3) nation="ÇÊ¸®ÇÉ";
-		else if(nationNum==4) nation="È«Äá";
-		else if(nationNum==5) nation="½Ì°¡Æ÷¸£";
-		else if(nationNum==6) nation="º£Æ®³²";
-		else if(nationNum==7) nation="´ë¸¸";
+		if(nationNum==1) nation = "ï¿½Ïºï¿½";
+		else if(nationNum==2) nation="ï¿½Â±ï¿½";
+		else if(nationNum==3) nation="ï¿½Ê¸ï¿½ï¿½ï¿½";
+		else if(nationNum==4) nation="È«ï¿½ï¿½";
+		else if(nationNum==5) nation="ï¿½Ì°ï¿½ï¿½ï¿½ï¿½ï¿½";
+		else if(nationNum==6) nation="ï¿½ï¿½Æ®ï¿½ï¿½";
+		else if(nationNum==7) nation="ï¿½ë¸¸";
 		
-		// pitour Ã³¸® // day1~7ÀÏÀÌ ´Ù µé¾î¿À±â ¶§¹®¿¡ period¸¦ ÀÌ¿ëÇØ¼­ ±â°£¿¡ ¸Â°Ô Ã³¸® ºñ¾îÀÖ´Â ÀÏÂ÷´Â ¸ðµÎ "ÀÚÀ¯¿©Çà" ÀÌ µé¾îÀÖÀ½.
+		// pitour Ã³ï¿½ï¿½ // day1~7ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ periodï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ø¼ï¿½ ï¿½â°£ï¿½ï¿½ ï¿½Â°ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 		String period = request.getParameter("period");
 		System.out.println("period : " + period);
 		
@@ -84,7 +84,7 @@ public class AdminAddPackageInsertCtrl extends HttpServlet {
 			date = Integer.parseInt(period.substring(2, 3));
 		}catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("¿©Çà±â°£ ÀÔ·Â ¿À·ù ¹ß»ý");
+			System.out.println("ï¿½ï¿½ï¿½ï¿½â°£ ï¿½Ô·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½");
 			return;
 		}
 		String picode = request.getParameter("picode");
@@ -101,16 +101,16 @@ public class AdminAddPackageInsertCtrl extends HttpServlet {
 		String day6 = request.getParameter("day6");
 		String day7 = request.getParameter("day7");
 		
-		if(!day1.equals("ÀÚÀ¯¿©Çà"))day1 = day1.substring(day1.indexOf("/")+1, day1.lastIndexOf("/"));
-		if(!day2.equals("ÀÚÀ¯¿©Çà"))day2 = day2.substring(day2.indexOf("/")+1, day2.lastIndexOf("/"));
-		if(!day3.equals("ÀÚÀ¯¿©Çà"))day3 = day3.substring(day3.indexOf("/")+1, day3.lastIndexOf("/"));
-		if(!day4.equals("ÀÚÀ¯¿©Çà"))day4 = day4.substring(day4.indexOf("/")+1, day4.lastIndexOf("/"));
-		if(!day5.equals("ÀÚÀ¯¿©Çà"))day5 = day5.substring(day5.indexOf("/")+1, day5.lastIndexOf("/"));
-		if(!day6.equals("ÀÚÀ¯¿©Çà"))day6 = day6.substring(day6.indexOf("/")+1, day6.lastIndexOf("/"));
-		if(!day7.equals("ÀÚÀ¯¿©Çà"))day7 = day7.substring(day7.indexOf("/")+1, day7.lastIndexOf("/"));
+		if(!day1.equals("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"))day1 = day1.substring(day1.indexOf("/")+1, day1.lastIndexOf("/"));
+		if(!day2.equals("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"))day2 = day2.substring(day2.indexOf("/")+1, day2.lastIndexOf("/"));
+		if(!day3.equals("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"))day3 = day3.substring(day3.indexOf("/")+1, day3.lastIndexOf("/"));
+		if(!day4.equals("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"))day4 = day4.substring(day4.indexOf("/")+1, day4.lastIndexOf("/"));
+		if(!day5.equals("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"))day5 = day5.substring(day5.indexOf("/")+1, day5.lastIndexOf("/"));
+		if(!day6.equals("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"))day6 = day6.substring(day6.indexOf("/")+1, day6.lastIndexOf("/"));
+		if(!day7.equals("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"))day7 = day7.substring(day7.indexOf("/")+1, day7.lastIndexOf("/"));
 		
 		String tour = day1 + "/" +day2 + "/" +day3 + "/" +day4 + "/" +day5 + "/" +day6 + "/" +day7;
-		//3¹Ú4ÀÏ = 4 
+		//3ï¿½ï¿½4ï¿½ï¿½ = 4 
 				
 		String[] sarr = tour.split("/");
 		String pitour ="";
@@ -124,7 +124,7 @@ public class AdminAddPackageInsertCtrl extends HttpServlet {
 		pi.setPi_code(request.getParameter("picode"));
 		pi.setPi_country(nation);
 		pi.setHi_code(request.getParameter("hicode"));
-		pi.setPn_idx(Integer.parseInt(request.getParameter("newpnidx")));	// À¯ÀÇ»çÇ× »ý¼ºÀÏ °æ¿ì¸¸ µ¿ÀÛÇÏ¹Ç·Î »ý¼º½Ã ¸¸µé¾îÁö´Â newpnidx¸¦ ³Ö¾îÁÜ
+		pi.setPn_idx(Integer.parseInt(request.getParameter("newpnidx")));	// ï¿½ï¿½ï¿½Ç»ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ì¸¸ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¹Ç·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ newpnidxï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½ï¿½
 		//pi.setpn_idx(Integer.parseInt(request.getParameter("pnidx")))
 		pi.setPi_name(request.getParameter("piname"));
 		pi.setPi_period(request.getParameter("period"));
@@ -147,16 +147,16 @@ public class AdminAddPackageInsertCtrl extends HttpServlet {
 		String adminId = adminLoginInfo.getAi_id();
 		
 		AdminAddPackageInsertSvc adminAddPackageInsertSvc = new AdminAddPackageInsertSvc();
-		int result = adminAddPackageInsertSvc.insertPackage(pi);	// ÀÎ¼­Æ® 
-		int result2 = adminAddPackageInsertSvc.excuteProcedure(pi, adminId);	// ÇÁ·Î½ÃÀú 
-		System.out.println("ÇÁ·Î½ÃÀú result2 : " + result2);
+		int result = adminAddPackageInsertSvc.insertPackage(pi);	// ï¿½Î¼ï¿½Æ® 
+		int result2 = adminAddPackageInsertSvc.excuteProcedure(pi, adminId);	// ï¿½ï¿½ï¿½Î½ï¿½ï¿½ï¿½ 
+		System.out.println("ï¿½ï¿½ï¿½Î½ï¿½ï¿½ï¿½ result2 : " + result2);
 		
 		if (result == 1 ) {
 			response.setContentType("text/html; charset=utf-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('" + picode + " ÆÐÅ°Áö Ãß°¡¿¡ ¼º°øÇß½À´Ï´Ù.');");
-			out.println("location.replace('/greenTourSite/admin_package_list');");		  
+			out.println("alert('" + picode + " ï¿½ï¿½Å°ï¿½ï¿½ ï¿½ß°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.');");
+			out.println("location.replace('/greenTour/admin_package_list');");		  
 			out.println("</script>");
 			out.close();			
 			
@@ -164,8 +164,8 @@ public class AdminAddPackageInsertCtrl extends HttpServlet {
 			response.setContentType("text/html; charset=utf-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('" + picode + " ÆÐÅ°Áö Ãß°¡¿¡ ½ÇÆÐÇß½À´Ï´Ù.');");
-			out.println("location.replace('/greenTourSite/admin_package_list');");		
+			out.println("alert('" + picode + " ï¿½ï¿½Å°ï¿½ï¿½ ï¿½ß°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.');");
+			out.println("location.replace('/greenTour/admin_package_list');");		
 			out.println("</script>");
 			out.close();
 		}

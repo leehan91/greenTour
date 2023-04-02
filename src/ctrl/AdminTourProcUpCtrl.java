@@ -12,7 +12,7 @@ import vo.*;
 @WebServlet("/tour_proc_up")
 @MultipartConfig(
 		fileSizeThreshold = 0,
-		location = "E:/lsg/web/work/greenTourSite/WebContent/front/img"		
+		location = "E:/lsg/web/work/greenTour/WebContent/front/img"		
 )
 public class AdminTourProcUpCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -21,20 +21,20 @@ public class AdminTourProcUpCtrl extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			request.setCharacterEncoding("utf-8");
     	
-    	// ÀÌ¹ÌÁö Ã³¸® --------------------------------------
+    	// ï¿½Ì¹ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ --------------------------------------
     	
 		
     		Part part = request.getPart("ptimg");						
     		
     		String contentDisposition = part.getHeader("content-disposition");
-    		// EX) form-data; name="file1"; filename="¾÷·ÎµåÇÒÆÄÀÏ¸í.È®ÀåÀÚ"
+    		// EX) form-data; name="file1"; filename="ï¿½ï¿½ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½.È®ï¿½ï¿½ï¿½ï¿½"
     		System.out.println("contentDisposition : "+ contentDisposition);
     		
     		String uploadFileName = getUploadFileName(contentDisposition);
     		
     		part.write(uploadFileName);
     		
-    		String ptimg = uploadFileName; // ÀÌ¹ÌÁö ¸í 
+    		String ptimg = uploadFileName; // ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ 
     		
     		// --------------------------------------
     	
@@ -77,13 +77,13 @@ public class AdminTourProcUpCtrl extends HttpServlet {
     	AdminTourProcInSvc tourProcInSvc = new AdminTourProcInSvc();
     	int result = tourProcInSvc.TourProcup(pt);
     	
-    	if (result == 1) {	// Á¤»óÀûÀ¸·Î ±ÛÀÌ µî·ÏµÇ¾úÀ¸¸é
+    	if (result == 1) {	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ÏµÇ¾ï¿½ï¿½ï¿½ï¿½ï¿½
     		response.sendRedirect("tour_list");
-    	} else {	// ±Û µî·Ï ½ÇÆÐ		
+    	} else {	// ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½		
     		response.setContentType("text/html; charset=utf-8");
     		PrintWriter out = response.getWriter();
     		out.println("<script>");
-    		out.println("alert('±Ûµî·Ï¿¡ ½ÇÆÐÇß½À´Ï´Ù.\\n´Ù½Ã ½ÃµµÇÏ¼¼¿ä.');");
+    		out.println("alert('ï¿½Ûµï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.\\nï¿½Ù½ï¿½ ï¿½Ãµï¿½ï¿½Ï¼ï¿½ï¿½ï¿½.');");
     		out.println("history.back();");
     		out.println("</script>");
     		out.close();

@@ -51,7 +51,7 @@ public class AdminMemberListCtrl extends HttpServlet {
 		request.setAttribute("memberList", memberList);
 		request.setAttribute("pageInfo", pageInfo);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/greenTour/admin/member/member_list.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/member/member_list.jsp");
 		dispatcher.forward(request, response);
 	}
 

@@ -199,7 +199,7 @@ z-index:2;}
 	</div>
 	<div class="rightbanner">
 		<div>
-		<p style="width:100%; height:460px; overflow: hidden;"><a href="/greenTourSite/sch_keyword?keyword=일본"><img alt="여행도시 & 패키지 배너" src="https://image.hanatour.com/usr/manual/md/2023/02/PL00113647/PL00113647.jpg"></a></p>
+		<p style="width:100%; height:460px; overflow: hidden;"><a href="/greenTour/sch_keyword?keyword=일본"><img alt="여행도시 & 패키지 배너" src="https://image.hanatour.com/usr/manual/md/2023/02/PL00113647/PL00113647.jpg"></a></p>
 		</div>
 	</div>
 

@@ -73,7 +73,7 @@ function listDel(ptcode){
 	if (confirm("정말 삭제하시겠습니까?")){
 		$.ajax({
 			type : "POST",
-			url : "/greenTourSite/tour_proc_del",
+			url : "/greenTour/tour_proc_del",
 			data : {"ptcode" : ptcode},
 			success : function(chkRs){
 				if (chkRs == 0){
@@ -94,13 +94,13 @@ function listDel(ptcode){
 		<li><a href="">도시 관리</a></li><hr />
 		<li><a href="">게시판 관리</a></li><hr />
 		<li class = "fold">
-         <a href="/greenTourSite/admin_package_list">상품 관리</a><br />
-         <span>&nbsp;&nbsp;&nbsp;<a href="/greenTourSite/admin_package_list"> - 패키지 관리</a></span><br />
-	         <span>&nbsp;&nbsp;&nbsp;<a href="/greenTourSite/hotel_list"> - 호텔 관리</a></span><br />
-	         <span>&nbsp;&nbsp;&nbsp;<strong><a href="/greenTourSite/tour_list"> - 관광 상품 관리</a></strong><br />
+         <a href="/greenTour/admin_package_list">상품 관리</a><br />
+         <span>&nbsp;&nbsp;&nbsp;<a href="/greenTour/admin_package_list"> - 패키지 관리</a></span><br />
+	         <span>&nbsp;&nbsp;&nbsp;<a href="/greenTour/hotel_list"> - 호텔 관리</a></span><br />
+	         <span>&nbsp;&nbsp;&nbsp;<strong><a href="/greenTour/tour_list"> - 관광 상품 관리</a></strong><br />
       </li><hr />
 		<li><a href="">고객센터</a></li><hr />
-		<li class = "fold"><a href="/greenTourSite/admin_amount">통계</a></li>
+		<li class = "fold"><a href="/greenTour/admin_amount">통계</a></li>
 	</ul>
 <form name="frm" />
 <table width="830" class="list">
@@ -141,7 +141,7 @@ if(ptList.size() > 0){ // 게시글 목록이 있으면
 	<td align="left"><%=addr %></td>
 	<td><%=pt.getPt_date() %></td>
 	<td><a href="tour_form_up?ptcode=<%=ptcode %>">
-	<img id="edit" src="/greenTourSite/front/img/edit.png"></a></td>
+	<img id="edit" src="/greenTour/front/img/edit.png"></a></td>
 	<td><input type="checkbox" name="del" class="del" value="<%=ptcode %>" /></td>
 </tr>
 <%

@@ -23,7 +23,7 @@ public class PareviewListDao {
 			ResultSet rs = null;
 			int rcnt = 0;
 			try {			
-				String sql = "select count(*) from t_cs_pareview " + where; 
+				String sql = "select count(*) from t_cs_pareview, t_order_painfo " + where; 
 				// System.out.println(sql);
 				stmt = conn.createStatement();
 				rs = stmt.executeQuery(sql);

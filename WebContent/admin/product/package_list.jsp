@@ -43,7 +43,7 @@
 	function info(picode) {
 		$.ajax({
 			type : "POST",
-			url : "/greenTourSite/admin_package_info",
+			url : "/greenTour/admin_package_info",
 			data : {
 				"picode" : picode
 			},
@@ -79,13 +79,13 @@
 		<li><a href="">도시 관리</a></li><hr />
 		<li><a href="">게시판 관리</a></li><hr />
 		<li>
-         <a href="/greenTourSite/admin_package_list">상품 관리</a><br />
-         <span>&nbsp;&nbsp;&nbsp;<strong><a href="/greenTourSite/admin_package_list"> - 패키지 관리</a></strong></span><br />
-	     <span>&nbsp;&nbsp;&nbsp;<a href="/greenTourSite/hotel_list"> - 호텔 관리</a></span><br />
-	     <span>&nbsp;&nbsp;&nbsp;<a href="/greenTourSite/tour_list"> - 관광 상품 관리</a></span><br />
+         <a href="/greenTour/admin_package_list">상품 관리</a><br />
+         <span>&nbsp;&nbsp;&nbsp;<strong><a href="/greenTour/admin_package_list"> - 패키지 관리</a></strong></span><br />
+	     <span>&nbsp;&nbsp;&nbsp;<a href="/greenTour/hotel_list"> - 호텔 관리</a></span><br />
+	     <span>&nbsp;&nbsp;&nbsp;<a href="/greenTour/tour_list"> - 관광 상품 관리</a></span><br />
       </li><hr />
 		<li><a href="">고객센터</a></li><hr />
-		<li><a href="/greenTourSite/admin_amount">통계</a></li>
+		<li><a href="/greenTour/admin_amount">통계</a></li>
 	</ul>
 	<div>
 		<div>

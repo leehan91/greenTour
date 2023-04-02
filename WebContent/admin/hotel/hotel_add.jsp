@@ -79,7 +79,7 @@ function selectCity(e) {
 	
 	$.ajax({
 		type : "POST",
-		url : "/greenTourSite/hotel_code", 
+		url : "/greenTour/hotel_code", 
 		data : data,
 		success : function(hotelId) {
 			$("#newId").text(hotelId.new_id);
@@ -172,7 +172,7 @@ function selectCity(e) {
 <div>
 	<div class="content">
 		<span class="hcode">호텔코드 : <span id="newId"></span></span>
-		<form method="get" id="hotelAddForm" action="/greenTourSite/hotel_code">
+		<form method="get" id="hotelAddForm" action="/greenTour/hotel_code">
 			<table class="tg" style="table-layout: fixed; width: 1130px">
 				<colgroup>
 					<col style="width: 77px">

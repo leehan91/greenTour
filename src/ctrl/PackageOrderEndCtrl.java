@@ -26,16 +26,16 @@ public class PackageOrderEndCtrl extends HttpServlet {
 		OrderPaInfo orderPaInfo = PaOrderEndSvc.getOrderInfo(miid, opCode);
 		
 		
-		if(orderPaInfo == null) {		// ÁÖ¹®Á¤º¸°¡ ¾øÀ» °æ¿ì 
+		if(orderPaInfo == null) {		// ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ 
 			response.setContentType("text/html; charset=utf-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('Àß¸øµÈ °æ·Î·Î µé¾î¿À¼Ì½À´Ï´Ù.');");
-			out.println("location.replace('/greenTourSite/index.jsp');");
+			out.println("alert('ï¿½ß¸ï¿½ï¿½ï¿½ ï¿½ï¿½Î·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½ï¿½Ï´ï¿½.');");
+			out.println("location.replace('/greenTour/index.jsp');");
 			out.println("</script>");
 			out.close();	
 			
-		}else {		// ÁÖ¹® Á¤º¸°¡ ÀÖÀ» °æ¿ì 
+		}else {		// ï¿½Ö¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ 
 			request.setAttribute("orderPaInfo", orderPaInfo);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("front/reserv/order_end.jsp");
 			dispatcher.forward(request, response);

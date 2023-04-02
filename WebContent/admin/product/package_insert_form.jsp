@@ -131,7 +131,7 @@ function getPicode(nation, city){
 		if(confirm('상품코드를 생성(확인)하시겠습니까?')){
 			$.ajax({
 				type : "POST",
-				url : "/greenTourSite/admin_add_package_getpicode",
+				url : "/greenTour/admin_add_package_getpicode",
 				data : {"nation" : nation, "city" : city },
 				success : function(data){
 					if(data == "" || data == null){	// 코드 생성 실패
@@ -251,9 +251,9 @@ textarea{
 	      <li><a href="">게시판 관리</a></li><hr />
 	      <li>
 	         <a href="">상품 관리</a><br />
-	         <span>&nbsp;&nbsp;&nbsp;<a href="/greenTourSite/admin_package_list"> - 패키지 관리</a></span><br />
-	         <span>&nbsp;&nbsp;&nbsp;<a href="/greenTourSite/hotel_list"> - 호텔 관리</a></span><br />
-	         <span>&nbsp;&nbsp;&nbsp;<a href="/greenTourSite/tour_list"> - 관광 상품 관리</a></strong><br />
+	         <span>&nbsp;&nbsp;&nbsp;<a href="/greenTour/admin_package_list"> - 패키지 관리</a></span><br />
+	         <span>&nbsp;&nbsp;&nbsp;<a href="/greenTour/hotel_list"> - 호텔 관리</a></span><br />
+	         <span>&nbsp;&nbsp;&nbsp;<a href="/greenTour/tour_list"> - 관광 상품 관리</a></strong><br />
 	      </li><hr />
 	      <li><a href="">고객센터</a></li><hr />
 	      <li><a href="../admin_stat">통계</a></li>
@@ -581,7 +581,7 @@ function makePnidx(){
 	if(confirm('유의사항을 생성하시겠습니까?')){
 		$.ajax({
 			type : "POST",
-			url : "/greenTourSite/admin_add_package_notice",
+			url : "/greenTour/admin_add_package_notice",
 			data : {"pninsur" : pninsur, "pnguide" : pnguide, 
 					"pninclude" : pninclude, "pndeclude" : pndeclude, 
 					"pnwarning" : pnwarning, "pnsafe" : pnsafe,

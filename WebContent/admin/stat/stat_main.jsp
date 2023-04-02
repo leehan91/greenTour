@@ -115,7 +115,7 @@ $(document).ready(function(){
 </script>
 <div class="side_menu">
   <div class="ctg">
-      <a href="/greenTourSite/member_list" class="menulink">회원 관리</a>
+      <a href="/greenTour/member_list" class="menulink">회원 관리</a>
       <ul class ="hide">
   		<li><a href="">회원 목록</a></li>
 		<li><a href="">예약 관리</a></li>
@@ -128,11 +128,11 @@ $(document).ready(function(){
       </ul>
   </div>
   <div class="ctg">
-      <a href="/greenTourSite/admin_package_list" class="menulink">상품 관리</a>
+      <a href="/greenTour/admin_package_list" class="menulink">상품 관리</a>
       <ul class ="hide">
-		<li><a href="/greenTourSite/admin_package_list">패키지 관리</a></li>
-		<li><a href="/greenTourSite/hotel_list">호텔 관리</a></li>
-		<li><a href="/greenTourSite/tour_list">관광 상품 관리</a></li>
+		<li><a href="/greenTour/admin_package_list">패키지 관리</a></li>
+		<li><a href="/greenTour/hotel_list">호텔 관리</a></li>
+		<li><a href="/greenTour/tour_list">관광 상품 관리</a></li>
       </ul>
   </div>
   <div class="ctg">
@@ -145,10 +145,10 @@ $(document).ready(function(){
       </ul>
   </div>
     <div class="ctg">
-      <a href="/greenTourSite/admin_stat" class="menulink">통계</a>
+      <a href="/greenTour/admin_stat" class="menulink">통계</a>
       <ul class ="hide">
-		<li><a href="/greenTourSite/admin_stat">통계 홈</a></li>
-		<li><a href="/greenTourSite/admin_amount">월간 매출액</a></li>
+		<li><a href="/greenTour/admin_stat">통계 홈</a></li>
+		<li><a href="/greenTour/admin_amount">월간 매출액</a></li>
 		<li><a href="#">도시별 판매액</a></li>
       </ul>
   </div>

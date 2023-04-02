@@ -24,7 +24,7 @@ if (loginInfo != null) {
 <meta charset="UTF-8">
 <title>GreenTour</title>
 </head>
-<script src="/greenTourSite/js/jquery-3.6.1.js"></script>
+<script src="/greenTour/js/jquery-3.6.1.js"></script>
 
 <script>
 function onlyNum(obj){

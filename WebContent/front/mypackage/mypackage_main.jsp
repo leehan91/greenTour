@@ -77,7 +77,7 @@ frm > input {width: 10px;}
 	alert(nation);
 	$.ajax({
 		type : "POST",
-		url : "/greenTourSite/mypackage_main_citys",
+		url : "/greenTour/mypackage_main_citys",
 		data : {"nation" : nation },
 		success : function(chkRs){
 			if(chkRs == 0){	// 실패했을 경우 

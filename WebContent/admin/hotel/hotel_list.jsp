@@ -44,7 +44,7 @@ function hotelDel() {
 		if (confirm("정말 삭제하시겠습니까?")) {
 			$.ajax({
 				type : "POST", 
-				url : "/greenTourSite/hotel_del_ctrl", 
+				url : "/greenTour/hotel_del_ctrl", 
 				data : data,
 				success : function(chkRs) {
 					if (chkRs == 0) {		// 삭제에 실패했을 경우
@@ -60,7 +60,7 @@ function hotelDel() {
 	
 
 function aa() {
-	location.href = '/greenTourSite/hotel_add';
+	location.href = '/greenTour/hotel_add';
 }
 	
 	
@@ -106,13 +106,13 @@ function aa() {
 		<li><a href="">도시 관리</a></li><hr />
 		<li><a href="">게시판 관리</a></li><hr />
 		<li>
-         <a href="/greenTourSite/admin_package_list">상품 관리</a><br />
-         <span>&nbsp;&nbsp;&nbsp;<a href="/greenTourSite/admin_package_list"> - 패키지 관리</a></span><br />
-	     <span>&nbsp;&nbsp;&nbsp;<strong><a href="/greenTourSite/hotel_list"> - 호텔 관리</a></strong></span><br />
-	     <span>&nbsp;&nbsp;&nbsp;<a href="/greenTourSite/tour_list"> - 관광 상품 관리</a><br />
+         <a href="/greenTour/admin_package_list">상품 관리</a><br />
+         <span>&nbsp;&nbsp;&nbsp;<a href="/greenTour/admin_package_list"> - 패키지 관리</a></span><br />
+	     <span>&nbsp;&nbsp;&nbsp;<strong><a href="/greenTour/hotel_list"> - 호텔 관리</a></strong></span><br />
+	     <span>&nbsp;&nbsp;&nbsp;<a href="/greenTour/tour_list"> - 관광 상품 관리</a><br />
       	</li><hr />
 		<li><a href="">고객센터</a></li><hr />
-		<li><a href="/greenTourSite/admin_amount">통계</a></li>
+		<li><a href="/greenTour/admin_amount">통계</a></li>
 	</ul>
 	<div class="hotel_list">
 		<div class="table">
@@ -163,7 +163,7 @@ function aa() {
 							<td scope="col"><%=hi.getHi_name() %></td>
 							<td scope="col"><%=addr %></td>
 							<td scope="col">+<%=hi.getHi_tel() %></td>
-							<td scope="col"><a href="hotel_edit?hicode=<%=hicode %>"><img id="edit" src="/greenTourSite/front/img/edit.png"></a></td>
+							<td scope="col"><a href="hotel_edit?hicode=<%=hicode %>"><img id="edit" src="/greenTour/front/img/edit.png"></a></td>
 							<td scope="col"><input type='checkbox' name='del' class="test" value="<%=hicode %>"/><br /></td>
 						</tr>
 					<%

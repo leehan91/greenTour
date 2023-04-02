@@ -27,7 +27,7 @@ img {width: 100%; height: 100%;}
 .content {position: relative; padding-top: 61px; margin: 0 0 70px; overflow: hidden; z-index: 1;}
 .recommand {position: relative; height: 630px;}
 ul {list-style: none;}
-.background {background: url(/greenTourSite/front/img/greentourhot.jpg) no-repeat center 0;
+.background {background: url(/greenTour/front/img/greentourhot.jpg) no-repeat center 0;
 	background-size: cover; height: 220px;}
 .recommand>ul {top: 0px; left: 0px; z-index: 99; opacity: 1; display: block;}
 
